@@ -21,7 +21,7 @@ class Api::UsersController < ApplicationController
       .permit(:email, :password, :phone, :f_name,:l_name,:website, :about_me, :job_title, :skills)
   end
 
-
+ 
 
 end
 

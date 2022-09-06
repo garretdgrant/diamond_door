@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
+import  {Provider}  from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 // import './index.css';
 import App from './App';
@@ -23,7 +23,8 @@ function Root() {
       <BrowserRouter>
         <App />
       </BrowserRouter>
-  </Provider>
+      </Provider>
+    
   );
 }
 
@@ -43,8 +44,17 @@ const renderApplication = () => {
   );
 }
 
-if (sessionStorage.getItem("X-CSRF-Token") === null) {
+if (sessionStorage.getItem("X-CSRF-Token") === null || !sessionStorage.getItem("currentUser")) {
   restoreCSRF().then(renderApplication);
+} else {
+  renderApplication();
+}
+
+if (
+  sessionStorage.getItem("currentUser") === null ||
+  sessionStorage.getItem("X-CSRF-Token") === null 
+) {
+  store.dispatch(session.restoreSession()).then(renderApplication);
 } else {
   renderApplication();
 }
