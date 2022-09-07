@@ -31,32 +31,41 @@ function LoginFormPage() {
       });
   }
 
+  const handleDemo = () =>{
+    return dispatch(sessionActions.login({ email: "demo@user.io", password: "password" }))
+  }
+
   return (
     <>
-        <h1>Log In Form</h1>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="login-form">
+        <img src="login-background.jpg" alt="" />
         <ul>
             {errors.map(error => <li key={error}>{error}</li>)}
         </ul>
-        <label>
-            Email
-            <input
-            type="text"
-            value={email}
-            onChange={(e) => setemail(e.target.value)}
-            required
-            />
-        </label>
-        <label>
-            Password
-            <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            />
-        </label>
-        <button type="submit">Log In</button>
+            <div className='login-inputs'>
+            <h1 className='login-form-header'>
+            Sign In to access to salaries and reviews
+            </h1>
+                <input
+                type="text"
+                value={email}
+                onChange={(e) => setemail(e.target.value)}
+                required
+                placeholder='Email'
+                />
+            
+        
+                <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                placeholder='Password'
+                />
+        
+            <button type="submit">Log In</button>
+            <button onClick={handleDemo}>Demo Log In</button>
+        </div>
         </form>
     </>
   );

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as session from "../../store/session";
+import './signUpForm.css'
 
 function SignupFormPage() {
   const dispatch = useDispatch();
@@ -53,73 +54,82 @@ function SignupFormPage() {
     return setErrors(['Confirm Password field must be the same as the Password field']);
   };
 
+  const handleDemo = (e) =>{
+    e.preventDefault()
+    return dispatch(session.login({ email: "demo@user.io", password: "password" }))
+  }
+
   return (
-    <form onSubmit={handleSubmit}>
-      <ul>
-        {errors.map(error => <li key={error}>{error}</li>)}
-      </ul>
-      <label>
-        Email
-        <input
-          type="text"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-      </label>
-     
-      <label>
-        First Name
-        <input
-          type="text"
-          value={fName}
-          onChange={(e) => setFname(e.target.value)}
-          required
-        />
-      </label>
+    <>
+        <form onSubmit={handleSubmit} className='sign-up-form'>
+            <img src="sessionBackground.jpg" alt="" />
+        <ul>
+            {errors.map(error => <li key={error}>{error}</li>)}
+        </ul>
+        <div className="sign-up-inputs">
+        <h1 className="sign-up-header">You deserve a job that loves you back</h1>
+       
+            <input
+            type="text"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+            placeholder="Email"
+            />
+    
+            <input
+            type="text"
+            value={fName}
+            onChange={(e) => setFname(e.target.value)}
+            required
+            placeholder="First Name"
+            />
+    
+            <input
+            type="text"
+            value={lName}
+            onChange={(e) => setLname(e.target.value)}
+            placeholder="Last Name"
+            required
+            />
+       
 
-      <label>
-        Last Name
-        <input
-          type="text"
-          value={lName}
-          onChange={(e) => setLname(e.target.value)}
-          required
-        />
-      </label>
+       
+            
+            <input
+            type="text"
+            value={jobTitle}
+            onChange={(e) => setJobTitle(e.target.value)}
+            required
+            placeholder="Job Title"
+            />
+        
 
-      <label>
-        Job Title
-        <input
-          type="text"
-          value={jobTitle}
-          onChange={(e) => setJobTitle(e.target.value)}
-          required
-        />
-      </label>
+        
+            <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+            placeholder="Password"
+            />
+       
 
-      <label>
-        Password
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-      </label>
+        
+            <input
+            type="password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            required
+            placeholder="Confirm Password"
+            />
+        
+        <button type="submit">Sign Up</button>
+        <button onClick={handleDemo}>Demo Log In</button>
+        </div>
 
-      <label>
-        Confirm Password
-        <input
-          type="password"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-          required
-        />
-      </label>
-
-      <button type="submit">Sign Up</button>
-    </form>
+        </form>
+    </>
   );
 }
 
