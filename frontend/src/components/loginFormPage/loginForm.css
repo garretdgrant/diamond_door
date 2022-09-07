@@ -7,7 +7,7 @@
 
 .login-form {
     height: 100vh;
-    width: 100vw;
+    width: 100%;
 }
 
 
@@ -15,8 +15,8 @@
     content: '';
     position:absolute;
     height: 100vh;
-    width: 100vw;
-    background-color: rgba(25, 25, 25, 0.272);
+    width: 100%;
+    background-color: rgba(25, 25, 25, 0.247);
 }
 
 .login-inputs {
@@ -69,7 +69,7 @@
 
 .login-form-header {
     font-size: 24px;
-    margin: 5px;
+    margin: 0px;
     font-family: Arial, Helvetica, sans-serif;
     color: white;
     font-weight: bolder;
