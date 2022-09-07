@@ -1,7 +1,10 @@
+a {
+    text-decoration: none;
+}
 .nav-bar{
-    position: absolute;
+    position: relative;
     width: 100%;
-    height: 7%;
+    height: 10%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -9,5 +12,95 @@
     z-index: 1;
 }
 .right-side {
-    font-size: 24px;
+    color: #505863;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.right-side div {
+    height: 50%;
+    width: 8%;
+    margin-right: 5%;
+    
+}
+
+.right-side div:hover {
+    cursor: pointer;
+    fill: #0caa41;
+}
+
+svg.profile-icon {
+    height: 100%;
+    width: 100%;
+  
+}
+
+.left-side {
+    color: #0caa41;
+    font-weight: bolder;
+    font-family: Lato,sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+}
+
+.left-side a{
+    color: #0caa41;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    font-size: xx-large;
+    padding: 2%;
+}
+
+.nav-bar * {
+display: flex;
+width: 33%;
+height: 100%;
+
+}
+
+.personal-links {
+    justify-content: space-around;
+    flex-direction: row;
+    
+    /* width: 33%; */
+   height: 100%;
+}
+
+.personal-links div {
+    height: 100%;
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    
+}
+
+.gitHub {
+    margin-right: -45%;
+}
+
+.portfolio{
+    margin-left: -45%;
+}
+
+.personal-links div > a {
+    height: 100%;
+    width: 100%;
+    font-size: x-large;
+    color: #505863;
+    cursor: pointer;
+}
+
+
+a:hover {
+  
+}
+
+
+svg.profile-icon:hover{
+ 
 }

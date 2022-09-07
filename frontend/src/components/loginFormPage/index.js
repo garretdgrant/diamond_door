@@ -11,7 +11,7 @@ function LoginFormPage() {
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState([]);
 
-  if (Object.keys(sessionUser).length > 0) return <Redirect to="/" />;
+  if (sessionUser && Object.keys(sessionUser).length > 0) return <Redirect to="/splash" />;
 
   const handleSubmit = (e) => {
     e.preventDefault();

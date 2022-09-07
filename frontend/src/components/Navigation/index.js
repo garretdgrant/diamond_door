@@ -2,6 +2,8 @@ import './Navigation.css'
 import {VscAccount, VscGithub, VscBriefcase} from  'react-icons/vsc'
 import {AiOutlineLinkedin} from 'react-icons/ai'
 import { useState } from 'react'
+import { NavLink, Link } from 'react-router-dom'
+import LogOut from '../logOutButton'
 
 
 const Navigation = () => {
@@ -12,17 +14,21 @@ const Navigation = () => {
             <div className='nav-bar'>
 
                 <div className='left-side'>
-                    LOGO
+                    <Link to={`/`}>diamond door</Link> 
                 </div>
 
+                <div className='nav-logout'><LogOut /></div>
+
                 <div className='personal-links'>
-                    <VscGithub />
-                    <AiOutlineLinkedin />
-                    <VscBriefcase />
+                    <div className='gitHub'><a href="github.com"><VscGithub /></a></div>
+                    
+                    <div className='linkedin'><a href="linkedin.com"><AiOutlineLinkedin /></a></div> 
+                   
+                    <div className='portfolio'> <a href="portfolio.com"><VscBriefcase /></a></div>
                 </div>
 
                 <div className='right-side'>
-                    <VscAccount />      
+                    <div><VscAccount className='profile-icon'/></div>
                 </div>
 
             </div>
