@@ -5,6 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 // import './index.css';
 import App from './App';
 import configureStore from './store';
+import { fetchCompanies } from './store/companies';
 import csrfFetch, {restoreCSRF} from './store/csrf';
 import * as session from './store/session.js'
 
@@ -15,6 +16,7 @@ if (process.env.NODE_ENV !== 'production') {
   window.csrfFetch = csrfFetch;
   window.restore = restoreCSRF;
   window.session = session;
+  window.fetchCompanies = fetchCompanies;
 }
 
 function Root() {

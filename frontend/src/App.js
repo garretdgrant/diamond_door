@@ -1,4 +1,5 @@
 import { Switch, Route } from "react-router-dom";
+import CompanyIndex from "./components/companyIndex";
 import LoginFormPage from "./components/loginFormPage";
 import LogOut from "./components/logOutButton";
 import Navigation from "./components/Navigation";
@@ -20,6 +21,9 @@ function App() {
           </Route>
           <Route exact path="/splash">
             <Splash />
+          </Route>
+          <Route exact path='/index'>
+            <CompanyIndex />
           </Route>
         </Switch>
         <LogOut />
