@@ -1,5 +1,6 @@
 import { Switch, Route } from "react-router-dom";
 import CompanyIndex from "./components/companyIndex";
+import CompanyShow from "./components/companyShow";
 import LoginFormPage from "./components/loginFormPage";
 import LogOut from "./components/logOutButton";
 import Navigation from "./components/Navigation";
@@ -13,21 +14,22 @@ function App() {
     <>
       <Navigation />
       <Switch >
-        <Route exact path = "/" >
-        <SignupFormPage />
-        </Route>
           <Route exact path="/login" >
             <LoginFormPage />
           </Route>
           <Route exact path="/splash">
             <Splash />
           </Route>
-          <Route exact path='/index'>
+          <Route exact path='/companies'>
             <CompanyIndex />
+          </Route> 
+          <Route  path='/companies/:companyId'>
+            <CompanyShow />
+          </Route>
+          <Route path = "/" >
+            <SignupFormPage />
           </Route>
         </Switch>
-        <LogOut />
-
     </>
   );
 }

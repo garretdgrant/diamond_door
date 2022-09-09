@@ -12,8 +12,8 @@ require 'open-uri'
 ApplicationRecord.transaction do 
     puts "Destroying tables..."
     # Unnecessary if using `rails db:seed:replant`
-    User.destroy_all
     Company.destroy_all
+    User.destroy_all
   
     puts "Resetting primary keys..."
     # For easy testing, so that after seeding, the first `User` has `id` of 1
@@ -186,7 +186,7 @@ lulu = Company.create!(name: 'Lulu Lemon', about: "Founded in Vancouver, Canada 
   athletic apparel company for yoga, running, training and most other sweaty pursuits.", 
   website: "https://lululemon.com")
 logo = URI.open('https://diamond-door-dev.s3.us-west-1.amazonaws.com/logo_lulu.png')
-google.logo.attach(io: logo, filename: 'logo_lulu.png')
+lulu.logo.attach(io: logo, filename: 'logo_lulu.png')
 
 
 meta = Company.create!(name: 'Meta', about: "The Facebook company is now Meta. Meta builds technologies that help people 

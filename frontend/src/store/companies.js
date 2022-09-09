@@ -1,11 +1,17 @@
 import csrfFetch from "./csrf"
 
 export const SET_COMPANIES = 'SET_COMPANIES'
+export const SET_COMPANY = 'SET_COMPANY'
 
 
 export const setCompanies =(payload) => ({
     type: SET_COMPANIES,
     payload
+})
+
+export const setCompany = (payload) => ({
+  type: SET_COMPANY,
+  payload
 })
 
 
@@ -18,6 +24,12 @@ export const fetchCompanies = () => async dispatch => {
     return response;
 }
 
+export const fetchCompany = (companyId) => async dispatch => {
+  const response = await fetch(`/api/companies/${companyId}`);
+  const payload = await response.json();
+  dispatch(setCompanies(payload))
+  return response;
+}
   
 const companiesReducer = (state = {}, action) => {
     Object.freeze(state);
@@ -26,6 +38,8 @@ const companiesReducer = (state = {}, action) => {
     switch(action.type) {
       case SET_COMPANIES:
         return {...action.payload };
+      case SET_COMPANY:
+        return {...action.payload}
       default:
         return nextState;
     }

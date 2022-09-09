@@ -17,7 +17,6 @@ const Navigation = () => {
                     <Link to={`/`}>diamond door</Link> 
                 </div>
 
-                <div className='nav-logout'><LogOut /></div>
 
                 <div className='personal-links'>
                     <div className='gitHub'><a href="github.com"><VscGithub /></a></div>
@@ -29,6 +28,7 @@ const Navigation = () => {
 
                 <div className='right-side'>
                     <div><VscAccount className='profile-icon'/></div>
+                <div className='nav-logout'><LogOut /></div>
                 </div>
 
             </div>

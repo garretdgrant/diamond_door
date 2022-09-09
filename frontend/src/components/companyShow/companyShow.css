@@ -1,0 +1,172 @@
+.company-show-nav {
+    width: 95%;
+    height: 20rem;
+    box-shadow: 0 1px 1px 1px rgb(127 127 127 / 30%);
+    border-radius: 2px;
+    position: relative;
+}
+
+* {
+    font-family: 'Lato', sans-serif;
+}
+
+.company-show-banner {
+    height: 6rem;
+}
+
+.company-show-banner img{
+    height: 100%;
+    width: 100%;
+}
+
+.company-show-logo {
+    position: absolute;
+    top: 3rem;
+    left: 3rem;
+    
+}
+
+.company-show-logo img {
+    height: 100%;
+    width: 100%;
+    border: 1px solid #dedede;
+}
+
+.company-show-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+}
+
+.company-show-name {
+    position: absolute;
+    margin-top: 1rem;
+    font-weight: bolder;
+    color: #0d0d0d;
+    font-size: 32px;
+    line-height: 26px;
+    margin-left: 10rem;
+}
+
+.company-show-bottom-menu {
+    bottom: 0;
+   
+    position: absolute;
+    width: 100%;
+    height: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.company-show-menu-right {
+    border: solid blue;
+    display: flex;
+    height: 100%;
+    width: 25%;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.company-show-menu-left {
+    display: flex;
+    height: 100%;
+    width: 18%;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-bottom: -1rem;
+
+}
+
+.company-show-menu-right *{
+    cursor: pointer;
+    
+}
+
+.company-show-menu-right *:hover{
+    background-color: #f1f2f2;
+}
+
+.company-show-menu-left *{
+    cursor: pointer;
+    transition: background-color .3s linear;
+}
+
+.company-show-menu-left *:hover{
+    background-color: #f1f2f2;
+}
+
+
+
+.company-show-reviews {
+    height: 90%;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.company-show-jobs {
+    height: 90%;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+
+
+.company-show-add-review {
+    height: 90%;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bolder;
+}
+
+
+
+.company-show-break {
+    height: 75%;
+    width: 2.5px;
+    background: #eaeaea;
+}
+
+.company-show-follow {
+    border-color: rgb(24, 97, 191);
+    border-radius: 3px;
+    border-style: solid;
+    border-width: 1px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(24, 97, 191);
+    font-family: "Lato", sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 24px;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    display: inline-block;
+    min-width: 88px;
+    padding: 0px;
+    position: relative;
+    transition: color 0.2s ease-out 0s, background-color 0.2s ease-out 0s;
+    display: flex;
+    height: 50%;
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bolder;
+    font-size: 22px;
+}
+
+.company-show-follow:hover{
+    background-color: rgb(24, 97, 191);
+    color: white;
+}
+
