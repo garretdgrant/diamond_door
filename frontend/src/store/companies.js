@@ -27,7 +27,7 @@ export const fetchCompanies = () => async dispatch => {
 export const fetchCompany = (companyId) => async dispatch => {
   const response = await fetch(`/api/companies/${companyId}`);
   const payload = await response.json();
-  dispatch(setCompanies(payload))
+  dispatch(setCompany(payload))
   return response;
 }
   
@@ -39,7 +39,10 @@ const companiesReducer = (state = {}, action) => {
       case SET_COMPANIES:
         return {...action.payload };
       case SET_COMPANY:
-        return {...action.payload}
+        // return {...nextState,...action.payload}
+        console.log(action.payload)
+        nextState[action.payload.company.id] = action.payload.company
+        return nextState
       default:
         return nextState;
     }

@@ -2,6 +2,8 @@ import { useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { logout } from "../../store/session";
 
+import { Link } from "react-router-dom";
+
 const LogOut = () => {
     const dispatch = useDispatch();
 
@@ -10,7 +12,7 @@ const LogOut = () => {
         dispatch(logout())
     }
     return (
-        <button onClick={handleClick}>Log Out</button>
+        <Link to={`/login`}><button onClick={handleClick}>Log Out</button></Link>
     )
 }
 

@@ -13,11 +13,7 @@ const CompanyIndex = () => {
         dispatch(fetchCompanies())
     },[])
 
-    const handleClick = (e, companyId) => {
-        e.preventDefault();
-        console.log(companyId)
-        return <Redirect to={`/companies/${companyId}`} />
-    }
+
 
     return (
         <>

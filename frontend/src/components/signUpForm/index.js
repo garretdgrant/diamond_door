@@ -22,7 +22,7 @@ function SignupFormPage() {
 
   },[sessionUser])
 
-  if (sessionUser && Object.keys(sessionUser).length > 0) return <Redirect to="/splash" />;
+  if (sessionUser) return <Redirect to="/companies" />;
 
 
   const handleSubmit = (e) => {

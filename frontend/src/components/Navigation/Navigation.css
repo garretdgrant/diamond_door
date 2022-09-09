@@ -43,6 +43,8 @@ svg.profile-icon {
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    padding-left: 1rem;
+    
 
 }
 
@@ -52,8 +54,9 @@ svg.profile-icon {
     width: 100%;
     display: flex;
     align-items: center;
-    font-size: xx-large;
+    font-size: 45px;
     padding: 2%;
+    font-weight: bolder;
 }
 
 .nav-bar * {

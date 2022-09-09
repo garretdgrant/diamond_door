@@ -1,6 +1,6 @@
 .company-show-nav {
     width: 95%;
-    height: 20rem;
+    height: 17rem;
     box-shadow: 0 1px 1px 1px rgb(127 127 127 / 30%);
     border-radius: 2px;
     position: relative;
@@ -22,13 +22,14 @@
 .company-show-logo {
     position: absolute;
     top: 3rem;
-    left: 3rem;
+    left: 2.2%;
+    width: 7%;
     
 }
 
 .company-show-logo img {
     height: 100%;
-    width: 100%;
+    width: 92%;
     border: 1px solid #dedede;
 }
 
@@ -36,16 +37,17 @@
     display: flex;
     justify-content: center;
     margin-top: 3rem;
+    width: 100vw;
 }
 
 .company-show-name {
     position: absolute;
-    margin-top: 1rem;
+    margin-top: 2rem;
     font-weight: bolder;
     color: #0d0d0d;
     font-size: 32px;
     line-height: 26px;
-    margin-left: 10rem;
+    margin-left: 11rem;
 }
 
 .company-show-bottom-menu {
@@ -60,22 +62,23 @@
 }
 
 .company-show-menu-right {
-    border: solid blue;
+    /* border: solid blue; */
     display: flex;
     height: 100%;
     width: 25%;
-    justify-content: space-evenly;
+    justify-content: flex-end;
     align-items: center;
 }
 
 .company-show-menu-left {
     display: flex;
     height: 100%;
-    width: 18%;
+    width: 26%;
     justify-content: space-evenly;
     align-items: center;
     margin-bottom: -1rem;
-
+    font-size: 18px;
+    color: #1861bf
 }
 
 .company-show-menu-right *{
@@ -87,13 +90,23 @@
     background-color: #f1f2f2;
 }
 
-.company-show-menu-left *{
+.company-show-menu-left div{
     cursor: pointer;
     transition: background-color .3s linear;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: 1rem;
+
 }
 
-.company-show-menu-left *:hover{
+.company-show-menu-left div:hover{
     background-color: #f1f2f2;
+}
+
+.company-show-menu-left p {
+    margin-bottom: 1rem;
+    color: #404040;
 }
 
 
@@ -104,6 +117,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    font-family: 'Lato', sans-serif;
 
 }
 
@@ -116,17 +130,45 @@
 
 }
 
-
-
-.company-show-add-review {
+.company-show-overview {
     height: 90%;
     width: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: bolder;
+
 }
 
+
+.company-show-add-review {
+    height: 44%;
+    width: 44%;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    font-weight: bolder;
+    background-color: #1861bf;
+    color: #fff;
+    transition: background-color .25s cubic-bezier(0, 0.9, 0.5, 1);
+    font-size: 20px;
+    margin-right: 1rem;
+}
+
+.company-show-add-review:hover {
+    background-color: #1d4f90;
+    transition: background-color .25s cubic-bezier(0, 0.9, 0.5, 1);
+
+}
+
+.company-show-add-review span {
+    font-size: 39px;
+    font-weight: 400;
+}
+
+.company-show-add-review span:hover {
+    background-color: #1d4f90;
+}
 
 
 .company-show-break {
@@ -156,17 +198,97 @@
     position: relative;
     transition: color 0.2s ease-out 0s, background-color 0.2s ease-out 0s;
     display: flex;
-    height: 50%;
-    width: 30%;
+    height: 44%;
+    width: 25%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bolder;
-    font-size: 22px;
+    font-size: 20px;
+    margin-right: 1rem;
 }
 
 .company-show-follow:hover{
     background-color: rgb(24, 97, 191);
     color: white;
 }
+
+.company-overview-container {
+    width: 100vw;
+    height: 20%;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    color: rgb(80, 88, 99);
+    font-size: 20px;
+    line-height: 24px;
+}
+
+.company-overview-box {
+    
+    width: 95%;
+    border: 1px solid #c4c7cc;
+    box-shadow: 0px 0px 2px 0px #c4c7cc;
+    border-radius: 2px;
+    padding: 2rem;
+
+}
+
+.company-overview-header {
+    font-size: 27px;
+    font-weight: 600;
+    line-height: 50px;
+    color: #20262e;
+ 
+}
+
+.company-attributes-container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.left-attributes-container{
+    display: flex;
+    
+    justify-content: space-between;
+    width: 30%;
+    justify-self: flex-start;
+    margin-right: 15rem;
+    line-height: 3rem;
+}
+
+.right-attributes-container {
+    display: flex;
+    
+    justify-content: space-between;
+    width: 35%;
+    line-height: 3rem;
+
+}
+
+.company-attribute-titles-left{
+    font-weight: 600;
+    color: #505863
+}
+
+.company-attribute-titles-right{
+    font-weight: 600;
+    color: #505863
+}
+
+.company-show-about {
+    line-height: 180%;
+}
+
+.no-company-found{
+    width: 100vw;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: xx-large;
+    font-weight: bolder;
+}
+
 
