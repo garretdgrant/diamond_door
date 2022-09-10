@@ -18,5 +18,6 @@ class Company < ApplicationRecord
     validates :name, :about, :website, presence: true
     validates :name, uniqueness: true
     has_one_attached :logo
+    has_many :reviews
     
 end

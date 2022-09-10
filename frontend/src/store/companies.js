@@ -39,6 +39,7 @@ const companiesReducer = (state = {}, action) => {
       case SET_COMPANIES:
         return {...action.payload };
       case SET_COMPANY:
+     
         // return {...nextState,...action.payload}
         console.log(action.payload)
         nextState[action.payload.company.id] = action.payload.company

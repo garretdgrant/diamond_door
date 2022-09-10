@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     resources :users, only: [:create, :show]
     resource :session, only: [:show, :create, :destroy]
     resources :companies, only: [:index, :show]
+    resources :reviews, only: [:update, :destroy, :create]
+    get "/reviews/user/:user_id", to: "reviews#user_index"
   end
 
 end
