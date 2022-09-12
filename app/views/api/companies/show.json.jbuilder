@@ -8,6 +8,9 @@ end
 
 json.reviews do 
     @company.reviews.each do |review|
-        json.extract! review, :id, :job_title
+        json.set! review.id do
+            json.extract! review, :id, :job_title, :company_id, :user_id, :rating,:current_employee, :former_employee,
+            :employment_status, :headline, :pros, :cons, :advice
+        end
     end
 end

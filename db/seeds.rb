@@ -12,12 +12,13 @@ require 'open-uri'
 ApplicationRecord.transaction do 
     puts "Destroying tables..."
     # Unnecessary if using `rails db:seed:replant`
+    Review.destroy_all
     Company.destroy_all
     User.destroy_all
   
     puts "Resetting primary keys..."
     # For easy testing, so that after seeding, the first `User` has `id` of 1
-    tables = ['users', 'companies']
+    tables = ['users', 'companies', 'reviews']
     tables.each do |table|
       ApplicationRecord.connection.reset_pk_sequence!(table)
     end
@@ -60,6 +61,22 @@ ApplicationRecord.transaction do
   )
   logo = URI.open('https://diamond-door-dev.s3.us-west-1.amazonaws.com/logo_netflix.png')
   netflix.logo.attach(io: logo, filename: 'logo_netflix.png')
+
+  # Netflix Reviews
+  Review.create!(company_id: netflix.id, user_id: User.first.id, rating: 4, current_employee: true,
+  former_employee: false, employment_status: 'full time', job_title: 'engineer', headline: 'Great Company to work for',
+  pros: 'Netflix has great salaries, great management, and free lunches', cons: 'The work life balance could be much better',
+  advice: 'None, management is great' )
+
+  Review.create!(company_id: netflix.id, user_id: 2, rating: 5, current_employee: true,
+    former_employee: false, employment_status: 'full time', job_title: 'engineer', headline: 'Great Company to work for',
+    pros: 'Netflix has great salaries, great management, and free lunches', cons: 'The work life balance could be much better',
+    advice: 'None, management is great' )
+
+    Review.create!(company_id: netflix.id, user_id: 3, rating: 5, current_employee: true,
+      former_employee: false, employment_status: 'full time', job_title: 'engineer', headline: 'Great Company to work for',
+      pros: 'Netflix has great salaries, great management, and free lunches', cons: 'The work life balance could be much better',
+      advice: 'None, management is great' )
 
 #Nvidia
 nvidia = Company.create!(name: 'Nvidia', about: "NVIDIA pioneered accelerated computing to tackle challenges no one 

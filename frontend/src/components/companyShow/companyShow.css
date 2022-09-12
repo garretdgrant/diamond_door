@@ -161,9 +161,30 @@
 
 }
 
+.company-show-add-review-div {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+
+    
+}
+
+.company-show-add-review-div:hover {
+    background-color: #1d4f90;
+    transition: background-color .25s cubic-bezier(0, 0.9, 0.5, 1);
+    
+}
+
+.add-review-text:hover {
+    background-color: #1d4f90;
+    transition: background-color .25s cubic-bezier(0, 0.9, 0.5, 1);
+}
+
 .company-show-add-review span {
     font-size: 39px;
     font-weight: 400;
+    
 }
 
 .company-show-add-review span:hover {
@@ -289,6 +310,50 @@
     align-items: center;
     font-size: xx-large;
     font-weight: bolder;
+}
+
+.company-show-reviews-container {
+    width: 100vw;
+    height: 20%;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: rgb(80, 88, 99);
+    font-size: 20px;
+    line-height: 24px;
+}
+
+.individual-review-container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.individual-review-container p {
+    display: flex;
+    justify-content: center;
+}
+
+
+.update-review-button {
+    width: 20%;
+}
+
+.delete-review-button {
+    width: 20%;
+}
+
+.company-show-reviews-box {
+    
+    width: 95%;
+    border: 1px solid #c4c7cc;
+    box-shadow: 0px 0px 2px 0px #c4c7cc;
+    border-radius: 2px;
+    padding: 2rem;
+
 }
 
 

@@ -6,7 +6,7 @@ class Api::ReviewsController < ApplicationController
     end
 
     def user_index
-        render json: 'Test Fetch'
+        render json: 'User_index'
     end
 
     def create
@@ -18,6 +18,8 @@ class Api::ReviewsController < ApplicationController
     end
 
     def destroy
-
+        @review = Review.find_by(id: params[:id])
+        @review.destroy!
+        render json: {message: 'success'}
     end
 end

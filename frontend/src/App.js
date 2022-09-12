@@ -1,4 +1,5 @@
 import { Switch, Route } from "react-router-dom";
+import AddReviewForm from "./components/AddReviewForm";
 import CompanyIndex from "./components/companyIndex";
 import CompanyShow from "./components/companyShow";
 import LoginFormPage from "./components/loginFormPage";
@@ -25,6 +26,9 @@ function App() {
           </Route> 
           <Route  path='/companies/:companyId'>
             <CompanyShow />
+          </Route>
+          <Route path='/add-review/:companyId'>
+            <AddReviewForm />
           </Route>
           <Route path = "/" >
             <SignupFormPage />
