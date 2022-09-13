@@ -11,10 +11,7 @@ function SignupFormPage() {
   const [fName, setFname] = useState("");
   const [lName, setLname] = useState("");
   const [phone,setPhone] = useState("")
-  const [website, setWebsite] = useState("");
-  const [aboutMe, setAboutMe] = useState("");
   const [jobTitle, setJobTitle] = useState("");
-  const [skills, setSkills] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
@@ -33,9 +30,6 @@ function SignupFormPage() {
         fName,
         lName,
         phone,
-        skills,
-        website,
-        aboutMe,
         jobTitle
       };
     if (password === confirmPassword) {
@@ -66,12 +60,13 @@ function SignupFormPage() {
     <>
         <form onSubmit={handleSubmit} className='sign-up-form'>
             <img src="sessionBackground.jpg" alt="" />
-        <ul>
-            {errors.map(error => <li key={error}>{error}</li>)}
-        </ul>
         <div className="sign-up-inputs">
         <h1 className="sign-up-header">You deserve a job that loves you back</h1>
-       
+       <div class="signup-errors">
+          <ul>
+              {errors.map(error => <li key={error}>{error}</li>)}
+          </ul>
+       </div>
             <input
             type="text"
             value={email}

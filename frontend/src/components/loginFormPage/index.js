@@ -39,13 +39,15 @@ function LoginFormPage() {
     <>
         <form onSubmit={handleSubmit} className="login-form">
         <img src="login-background.jpg" alt="" />
-        <ul>
-            {errors.map(error => <li key={error}>{error}</li>)}
-        </ul>
             <div className='login-inputs'>
             <h1 className='login-form-header'>
             Sign In to access to salaries and reviews
             </h1>
+                <div class="login-errors">
+                  <ul>
+                      {errors.map(error => <li key={error}>{error}</li>)}
+                  </ul>
+                </div>
                 <input
                 type="text"
                 value={email}
@@ -67,6 +69,7 @@ function LoginFormPage() {
             <button onClick={handleDemo}>Demo Log In</button>
         </div>
         </form>
+        {console.log(errors)}
     </>
   );
 }

@@ -74,3 +74,8 @@
     color: white;
     font-weight: bolder;
 }
+
+.signup-errors {
+    color: red;
+}
+

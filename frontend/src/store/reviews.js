@@ -2,18 +2,32 @@ import { SET_COMPANY } from "./companies";
 import csrfFetch from "./csrf";
 
 export const REMOVE_REVIEW = 'REMOVE_REVIEW';
+export const ADD_REVIEW = 'ADD_REVIEW'
+
+const addReview = (payload)=>({
+  type: ADD_REVIEW,
+  payload
+})
 
 const removeReview = (payload) =>({
   type: REMOVE_REVIEW,
   payload
 })
 
+export const createReview = (payload) => async dispatch => {
+  const response = await csrfFetch(`/api/reviews`, {
+    method: 'POST',
+    body: JSON.stringify(payload)
+  })
+  const data = await response.json();
+  dispatch(addReview(data))
+}
+
 export const deleteReview = (reviewId) => async dispatch => {
   
   const response = await csrfFetch(`/api/reviews/${reviewId}`,
   {method: 'DELETE'});
   const payload = await response.json();
-  console.log(payload)
   dispatch(removeReview(reviewId))
   return response;
 }
@@ -30,6 +44,8 @@ const reviewsReducer = (state = {}, action) => {
       case REMOVE_REVIEW:
         delete nextState[action.payload]
         return nextState;
+      case ADD_REVIEW:
+       return {...nextState, [action.payload.review.id]: action.payload.review}
       default:
         return nextState;
     }

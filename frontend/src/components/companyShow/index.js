@@ -1,9 +1,12 @@
-import { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { Redirect, useParams, Link } from 'react-router-dom'
-import { fetchCompany } from '../../store/companies'
-import { deleteReview } from '../../store/reviews'
-import './companyShow.css'
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Redirect, useParams, Link } from 'react-router-dom';
+import { fetchCompany } from '../../store/companies';
+import { deleteReview } from '../../store/reviews';
+import {VscTrash} from 'react-icons/vsc';
+import {BsPencilSquare} from 'react-icons/bs'
+import ReactStars from 'react-rating-stars-component';
+import './companyShow.css';
 
 
 const CompanyShow = () => {
@@ -11,22 +14,33 @@ const CompanyShow = () => {
     const company = useSelector(state => state.companies[companyId])
     const reviews = Object.values(useSelector(state=> state.reviews))
     const user = useSelector(state=>state.session.user)
-    
     const dispatch = useDispatch();
+
+
     useEffect(()=>{
         dispatch(fetchCompany(companyId))
     },[companyId])
 
-    const handleDeleteReview = e => {
+    const handleDeleteReview = (e, reviewId) => {
         e.preventDefault();
-        console.log(e.target.value)
-        // dispatch(deleteReview(e.target.value))
+        console.log(e)
+        console.log(reviewId)
+        dispatch(deleteReview(reviewId))
 
     }
 
     const handleUpdateReview = e => {
         e.preventDefault();
         console.log('inside update review function')
+    }
+
+    const averageRating = () => {
+        let sum = 0
+        for (let i = 0; i < reviews.length; i++){
+            let review = reviews[i];
+            sum += review.rating
+        }
+        return sum/reviews.length
     }
  
 
@@ -42,7 +56,7 @@ const CompanyShow = () => {
                         <div className='company-show-menu-left'>
                             <div className='company-show-overview'> <p>icon</p> Overview</div>
                             <span className='company-show-break'></span>
-                            <div className='company-show-reviews'> <p>###</p> Reviews</div>
+                            <div className='company-show-reviews'> <p>{reviews.length}</p> Reviews</div>
                             <span className='company-show-break'></span>
                             <div className='company-show-jobs'> <p>###</p> Jobs</div>
                         </div>
@@ -102,23 +116,48 @@ const CompanyShow = () => {
             <div className='company-show-reviews-container'>
                 <div className='company-show-reviews-box'>
                     <h1 className='company-overview-header'>{company.name} Reviews</h1>
+                    <div class="reviews-main-header-stars">
+                        <h1>{parseFloat(averageRating()).toFixed(1)}</h1>
+                        <span><ReactStars
+                            count={5}
+                            size={32}
+                            edit={false}
+                            value={parseFloat(averageRating()).toFixed(1)}
+                            activeColor="#0caa41"
+                            />
+                        </span>
+                    </div>
+
                 </div>
                 {reviews.map( review => {return(
                     <>
                         <div className='company-show-reviews-box'>
 
                             <div className='individual-review-container'>
-                                <p>Rating: {review.rating} </p> 
-                                <p>{review.currentEmployee ? 'current employee' : 'former employee'}</p> 
-                                <p>Headline: {review.headline}</p>
-                                <p>Job Title: {review.jobTitle}</p> 
-                                <p>Pros: {review.pros}</p><br />
-                                <p>Cons: {review.cons}</p>
-                                <p>Advice to Management: {review.advice}</p>
-                                {user.id === review.userId ? <button className='update-review-button' value={review.id} onClick={handleUpdateReview}>Udate Review</button>  : null}
-                                {user.id === review.userId ? <button className='delete-review-button' value={review.id} onClick={handleDeleteReview}>Delete Review</button>  : null}
+                                <p className='rating-stars'>
+                                    {parseFloat(review.rating).toFixed(1)} 
+                                  <ReactStars
+                                    count={5}
+                                    size={20}
+                                    edit={false}
+                                    value={review.rating}
+                                    activeColor="#0caa41"
+                                    />
+                                </p> 
+                                <p className='review-current-employee'>{review.currentEmployee ? 'current employee ' : 'former employee '}
+                                  for {Math.floor(Math.random()*10) + 1} years
+                                </p> 
+                                <p className='review-headline'>"{review.headline}"</p>
+                                <p className='review-job-title'>{review.jobTitle}</p> 
+                                <p className='pro-con-advice-header'>Pros</p> <p>{review.pros}</p><br />
+                                <p className='pro-con-advice-header'>Cons</p> <p>{review.cons}</p>
+                                <p className='pro-con-advice-header'>Advice to Management</p><p>{review.advice}</p>
                                 <br />
                             </div>
+                                <div class="show-button-container">
+                                    {user.id === review.userId ? <button className='update-review-button' value={review.id} onClick={(e)=>handleUpdateReview(e,review.id)}><BsPencilSquare /></button>  : null}
+                                    {user.id === review.userId ? <button className='delete-review-button' value={review.id} onClick={(e)=>handleDeleteReview(e,review.id)}><VscTrash values={`${review.id}`}/></button>  : null}
+                                </div>
                         </div>
                     </>
                     )})}

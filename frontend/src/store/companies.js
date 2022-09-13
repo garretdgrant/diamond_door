@@ -20,7 +20,11 @@ export const setCompany = (payload) => ({
 export const fetchCompanies = () => async dispatch => {
     const response = await fetch("/api/companies");
     const payload = await response.json();
-    dispatch(setCompanies(payload))
+    if (response.ok){
+      dispatch(setCompanies(payload))
+    } else {
+      // dispatch(setErrors(payload))
+    }
     return response;
 }
 

@@ -74,3 +74,8 @@
     color: white;
     font-weight: bolder;
 }
+
+.login-errors{
+    color: red;
+    font-weight: 500;
+}
