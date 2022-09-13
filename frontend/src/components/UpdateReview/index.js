@@ -2,27 +2,29 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams} from 'react-router-dom';
 import { fetchCompany } from '../../store/companies';
-import { createReview } from '../../store/reviews';
+import { updateReview } from '../../store/reviews';
 import ReactStars from "react-rating-stars-component";
 
 
-import './AddReviewForm.css'
+import './UpdateReview.css'
 
-const AddReviewForm = () => {
+const UpdateReviewForm = () => {
     const dispatch = useDispatch();
     const history = useHistory();
-    const {companyId} = useParams();
-    const company = useSelector(state => state.companies[companyId])
+    const {reviewId} = useParams();
+    const review = useSelector(state => state.reviews[reviewId])
     const user = useSelector(state=>state.session.user)
-    const [rating, setRating] = useState(5)
-    const [currentEmployee, setCurrentEmployee] = useState(false)
-    const [formerEmployee, setFormerEmployee] = useState(false)
-    const [employmentStatus, setEmploymentStatus] = useState('Full-Time')
-    const [jobTitle, setJobTitle] = useState('')
-    const [headline, setHeadline] = useState('')
-    const [pros, setPros]= useState('')
-    const [cons, setCons] = useState('')
-    const[advice, setAdvice] = useState('')
+    const companyId = review.companyId;
+    const company = useSelector(state=> state.companies[companyId])
+    const [rating, setRating] = useState(review.rating)
+    const [currentEmployee, setCurrentEmployee] = useState(review.currentEmployee)
+    const [formerEmployee, setFormerEmployee] = useState(review.formerEmployee)
+    const [employmentStatus, setEmploymentStatus] = useState(review.employmentStatus)
+    const [jobTitle, setJobTitle] = useState(review.jobTitle)
+    const [headline, setHeadline] = useState(review.headline)
+    const [pros, setPros]= useState(review.pros)
+    const [cons, setCons] = useState(review.cons)
+    const[advice, setAdvice] = useState(review.advice)
     useEffect(()=>{
         dispatch(fetchCompany(companyId)) 
     },[companyId])
@@ -49,6 +51,7 @@ const AddReviewForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         const review = {
+            id: reviewId,
             companyId,
             userId: user.id,
             rating,
@@ -60,9 +63,8 @@ const AddReviewForm = () => {
             pros,
             cons,
             advice
-
         }
-        dispatch(createReview(review)).then(()=> history.push(`/companies/${companyId}`))
+        dispatch(updateReview(review)).then(()=> history.push(`/companies/${companyId}`))
     }
 
     const handleRating = rating => {
@@ -70,12 +72,7 @@ const AddReviewForm = () => {
         console.log('Rating', rating)
     }
 
-    // const handleCurrentEmployee = e => {
-    //     console.log('Im in current employee change')
-    //     setCurrentEmployee(!currentEmployee)
-    //     setFormerEmployee(!currentEmployee)
-    //     console.log(currentEmployee , formerEmployee)
-    // }
+ 
 
     const handleJobTitle = e => {
         setJobTitle(e.target.value)
@@ -98,7 +95,6 @@ const AddReviewForm = () => {
                 break;
             default:
                 break;
-
         }
     
     }
@@ -106,20 +102,20 @@ const AddReviewForm = () => {
     const handleHeadline = e => {
         setHeadline(e.target.value)
     }
-
+    if (!company || !companyId || !review) return(<><h1>Error</h1></>)
     return (
         <>
             <div className='add-form-outter-container'>
                 <div className='add-form-box-container'>
                     <div className='add-form-form-container'>
-                        <h1 className='add-form-header'>Review {company.name}</h1>
+                        <h1 className='add-form-header'>Update Review of {company.name}</h1>
                         <p className='add-form-minute'>It only takes a minute! Your anonymous review will help other job seekers</p>
                         <img className='add-form-logo' src={`${company.photoUrl}`} /> <br />
 
                         <form className='add-form' onSubmit={handleSubmit}>
                             <div class="overall-rating">
                                 <p>Overall Rating</p>
-                                <ReactStars  size={40} count={5} onChange={handleRating} activeColor={`#0caa41`}/>
+                                <ReactStars  size={40} count={5} value={rating} onChange={handleRating} activeColor={`#0caa41`}/>
                             </div>
                             {/* <label > {rating}
                                 <input type='range' min='1' max='5' onClick={handleRating} />
@@ -129,13 +125,18 @@ const AddReviewForm = () => {
                                  <div class="employee-radios-container">
                                     <div class="current-employee-input-container">
                                      <label for='current-employee'>
-                                        <input id='current-employee' type="radio" name='employee' onChange={handleCurrentEmployee}  />
+                                        <input id='current-employee' type="radio" name='employee' onChange={handleCurrentEmployee} 
+                                        checked={currentEmployee}
+                                        />
                                         Current Employee
                                     </label> 
                                     </div>
                                     <div className='former-employee-input-container'>
                                     <label for="former-employee">
-                                        <input id='former-employee' type="radio" name='employee' onChange={handleCurrentEmployee} />
+                                        <input id='former-employee' type="radio" name='employee' onChange={handleCurrentEmployee} 
+                                        checked={formerEmployee}
+
+                                        />
                                         Former Employee
                                     </label> 
                                     </div>
@@ -144,7 +145,7 @@ const AddReviewForm = () => {
                             
                             <div class="add-form-status-container">
                                 <label> Employment Status</label> <br/><br />
-                                    <select className='add-form-drop' onChange={handleEmployeeStatus} >
+                                    <select className='add-form-drop' onChange={handleEmployeeStatus} value={review.employmentStatus}>
                                         <option value="Full-Time">Full Time</option>
                                         <option value="Part-Time">Part Time</option>
                                         <option value="Intern">Intern</option>
@@ -190,7 +191,7 @@ const AddReviewForm = () => {
                                 <br />
                             </div>
 
-                            <div class="add-form-button-container"><button>Submit Review</button></div>
+                            <div class="add-form-button-container"><button>Update Review</button></div>
                         </form>
                     </div>
                     <div className='add-form-rules-container'>
@@ -223,4 +224,4 @@ const AddReviewForm = () => {
     )
 }
 
-export default AddReviewForm;
+export default UpdateReviewForm;

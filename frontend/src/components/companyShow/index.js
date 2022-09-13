@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect, useParams, Link } from 'react-router-dom';
+import { Redirect, useParams, Link, useHistory } from 'react-router-dom';
 import { fetchCompany } from '../../store/companies';
 import { deleteReview } from '../../store/reviews';
 import {VscTrash} from 'react-icons/vsc';
@@ -13,13 +13,15 @@ const CompanyShow = () => {
     const {companyId}= useParams();
     const company = useSelector(state => state.companies[companyId])
     const reviews = Object.values(useSelector(state=> state.reviews))
+    const sessionUser = useSelector(state => state.session.user)
     const user = useSelector(state=>state.session.user)
     const dispatch = useDispatch();
-
-
+    const history = useHistory();
+    
     useEffect(()=>{
         dispatch(fetchCompany(companyId))
     },[companyId])
+    if (!sessionUser) return <Redirect to="/login" />;
 
     const handleDeleteReview = (e, reviewId) => {
         e.preventDefault();
@@ -29,9 +31,9 @@ const CompanyShow = () => {
 
     }
 
-    const handleUpdateReview = e => {
+    const handleUpdateReview = (e, reviewId) => {
         e.preventDefault();
-        console.log('inside update review function')
+        history.push(`/update-review/${reviewId}`)
     }
 
     const averageRating = () => {

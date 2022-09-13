@@ -7,6 +7,7 @@ import LogOut from "./components/logOutButton";
 import Navigation from "./components/Navigation";
 import SignupFormPage from "./components/signUpForm";
 import Splash from "./components/splash";
+import UpdateReviewForm from "./components/UpdateReview";
 import "./index.css"
 
 
@@ -29,6 +30,9 @@ function App() {
           </Route>
           <Route path='/add-review/:companyId'>
             <AddReviewForm />
+          </Route>
+          <Route path='/update-review/:reviewId'>
+            <UpdateReviewForm />
           </Route>
           <Route path = "/" >
             <SignupFormPage />

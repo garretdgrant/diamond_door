@@ -17,6 +17,7 @@ const CompanyIndex = () => {
 
     return (
         <>
+            
             <h1 className='companies-index-header'>Companies Recommended for You</h1>
 
             <div className='parent-companies-container'>

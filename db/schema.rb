@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_09_221652) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_13_205247) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -56,6 +56,23 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_09_221652) do
     t.index ["name"], name: "index_companies_on_name", unique: true
   end
 
+  create_table "interviews", force: :cascade do |t|
+    t.bigint "company_id"
+    t.bigint "user_id"
+    t.string "title", null: false
+    t.boolean "offer", default: false
+    t.boolean "accepted", default: false
+    t.boolean "experience", default: true
+    t.string "difficulty", null: false
+    t.text "application", null: false
+    t.text "interview", null: false
+    t.text "questions", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_interviews_on_company_id"
+    t.index ["user_id"], name: "index_interviews_on_user_id"
+  end
+
   create_table "reviews", force: :cascade do |t|
     t.bigint "company_id"
     t.bigint "user_id"
@@ -94,6 +111,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_09_221652) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "interviews", "companies"
+  add_foreign_key "interviews", "users"
   add_foreign_key "reviews", "companies"
   add_foreign_key "reviews", "users"
 end
