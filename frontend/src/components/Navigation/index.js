@@ -28,7 +28,7 @@ const Navigation = () => {
 
                 <div className='right-side'>
                     <div><VscAccount className='profile-icon'/></div>
-                <div className='nav-logout'><LogOut /></div>
+                {/* <div className='nav-logout'><LogOut /></div> */}
                 </div>
 
             </div>

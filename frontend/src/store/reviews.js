@@ -21,6 +21,7 @@ export const createReview = (payload) => async dispatch => {
   })
   const data = await response.json();
   dispatch(addReview(data))
+  return response;
 }
 
 export const updateReview = (review) => async dispatch => {
@@ -39,6 +40,13 @@ export const deleteReview = (reviewId) => async dispatch => {
   {method: 'DELETE'});
   const payload = await response.json();
   dispatch(removeReview(reviewId))
+  return response;
+}
+
+export const fetchReview = (reviewId) => async dispatch => {
+  const response = await fetch(`/api/reviews/${reviewId}`);
+  const payload = await response.json();
+  dispatch(addReview(payload))
   return response;
 }
 

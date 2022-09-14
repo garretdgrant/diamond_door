@@ -26,6 +26,15 @@ class Api::ReviewsController < ApplicationController
         render json: {message: 'success'}
     end
 
+    def show
+        @review = Review.find_by(id: params[:id])
+        if @review
+            render :create
+        else
+            render json: {errors: 'Review not found'}, status: 404
+        end
+    end
+
     private
     def review_params
         # debugger

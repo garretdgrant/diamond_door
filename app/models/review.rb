@@ -21,8 +21,8 @@ class Review < ApplicationRecord
     validates :rating, :employment_status, :headline, :pros, :cons, presence: true
     validates :company_id, uniqueness: {scope: :user_id, message: 'can only be reviewed once.'}
     validates :rating, numericality: {in: 1..5}
-    validates :pros, length: {minimum: 20, message: 'pros must be at least 20 characters long' }
-    validates :pros, length: {minimum: 20, message: 'cons must be at least 20 characters long'}
+    validates :pros, length: {minimum: 20, message: 'must be at least 20 characters long' }
+    validates :cons, length: {minimum: 20, message: 'must be at least 20 characters long'}
 
 
     belongs_to :company

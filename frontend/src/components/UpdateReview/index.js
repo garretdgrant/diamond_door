@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams} from 'react-router-dom';
 import { fetchCompany } from '../../store/companies';
-import { updateReview } from '../../store/reviews';
+import { fetchReview, updateReview } from '../../store/reviews';
 import ReactStars from "react-rating-stars-component";
 
 
@@ -15,17 +15,23 @@ const UpdateReviewForm = () => {
     const review = useSelector(state => state.reviews[reviewId])
     const user = useSelector(state=>state.session.user)
     const company = useSelector(state=> state.companies[companyId])
-    const [rating, setRating] = useState(review.rating)
-    const [currentEmployee, setCurrentEmployee] = useState(review.currentEmployee)
-    const [formerEmployee, setFormerEmployee] = useState(review.formerEmployee)
-    const [employmentStatus, setEmploymentStatus] = useState(review.employmentStatus)
-    const [jobTitle, setJobTitle] = useState(review.jobTitle)
-    const [headline, setHeadline] = useState(review.headline)
-    const [pros, setPros]= useState(review.pros)
-    const [cons, setCons] = useState(review.cons)
-    const[advice, setAdvice] = useState(review.advice)
+    const [rating, setRating] = useState(null)
+    const [currentEmployee, setCurrentEmployee] = useState(null)
+    const [formerEmployee, setFormerEmployee] = useState(null)
+    const [employmentStatus, setEmploymentStatus] = useState(null)
+    const [jobTitle, setJobTitle] = useState(null)
+    const [headline, setHeadline] = useState(null)
+    const [pros, setPros]= useState(null)
+    const [cons, setCons] = useState(null)
+    const[advice, setAdvice] = useState(null)
+    const [errors, setErrors] = useState(null)
     useEffect(()=>{
-        dispatch(fetchCompany(companyId)) 
+        dispatch(fetchReview(reviewId)) 
+    },[reviewId])
+    
+    useEffect(()=>{
+        console.log(companyId)
+        if (companyId) dispatch(fetchCompany(companyId)) 
     },[companyId])
 
     const handleCurrentEmployee = (e) =>{
@@ -63,7 +69,21 @@ const UpdateReviewForm = () => {
             cons,
             advice
         }
-        dispatch(updateReview(review)).then(()=> history.push(`/companies/${companyId}`))
+        dispatch(updateReview(review))
+            .then(()=> history.push(`/companies/${companyId}`))
+            .catch( async (res) => {
+                let data;
+        try {
+          // .clone() essentially allows you to read the response body twice
+          data = await res.clone().json();
+        } catch {
+          data = await res.text(); 
+        }
+        if (data?.errors) setErrors(data.errors);
+        else if (data) setErrors([data]);
+        else setErrors([res.statusText]);
+
+            })
     }
 
     const handleRating = rating => {
@@ -101,7 +121,7 @@ const UpdateReviewForm = () => {
     const handleHeadline = e => {
         setHeadline(e.target.value)
     }
-    if (!company || !companyId || !review) return(<><h1>Error</h1></>)
+    if (!company || !review) return(<><h1>Error</h1></>)
     return (
         <>
             <div className='add-form-outter-container'>
@@ -189,6 +209,14 @@ const UpdateReviewForm = () => {
                                        value={advice} onChange={handleTextAreaInputs}/>
                                 <br />
                             </div>
+
+                            {errors ? 
+                                <div class="error-container">
+                                    {errors ? errors.map((error, i) => {
+                                    return( <li key={i}>{error}</li> )
+                                        }) : null}
+                                </div>
+                            :null}
 
                             <div class="add-form-button-container"><button>Update Review</button></div>
                         </form>

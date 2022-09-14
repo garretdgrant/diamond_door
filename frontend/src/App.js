@@ -33,7 +33,7 @@ function App() {
           <Route path='/add-review/:companyId'>
             <AddReviewForm />
           </Route>
-          <Route path='/update-review/:reviewId'>
+          <Route path='/update-review/:reviewId/:companyId'>
             <UpdateReviewForm />
           </Route>
           <Route path='/add-interview/:companyId'>

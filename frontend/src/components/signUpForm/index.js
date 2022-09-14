@@ -14,7 +14,7 @@ function SignupFormPage() {
   const [jobTitle, setJobTitle] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState(null);
   useEffect(()=>{
 
   },[sessionUser])
@@ -62,11 +62,14 @@ function SignupFormPage() {
             <img src="sessionBackground.jpg" alt="" />
         <div className="sign-up-inputs">
         <h1 className="sign-up-header">You deserve a job that loves you back</h1>
-       <div class="signup-errors">
-          <ul>
-              {errors.map(error => <li key={error}>{error}</li>)}
-          </ul>
-       </div>
+      {errors ? 
+        <div class="error-container">
+            <ul>
+                {errors.map(error => <li key={error}>{error}</li>)}
+            </ul>
+        </div>
+      
+      : null}
             <input
             type="text"
             value={email}

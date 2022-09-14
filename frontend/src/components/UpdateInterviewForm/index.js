@@ -22,6 +22,7 @@ const UpdateInterviewForm = () => {
     const [offer, setOffer] = useState('No');
     const [questions, setQuestions] = useState(null);
     const [answer, setAnswer] = useState(null);
+    const [errors, setErrors] = useState(null);
     
 
     useEffect(()=>{
@@ -109,6 +110,17 @@ const UpdateInterviewForm = () => {
         dispatch(createInterview(payload)).then(
             ()=> history.push(`/companies/${company.id}`)
         )
+        .catch( async (res) => {
+            let data;
+            try {
+            data = await res.clone().json();
+            } catch {
+            data = await res.text(); 
+            }
+            if (data?.errors) setErrors(data.errors);
+            else if (data) setErrors([data]);
+            else setErrors([res.statusText]);
+        })
     }
 
     if (!company || !interviewData) return(<></>)
@@ -188,6 +200,15 @@ const UpdateInterviewForm = () => {
                         <textarea placeholder='How did you answer this question?(Optional)' 
                            value={answer} onChange={e=>setAnswer(e.target.value)} id="answer" cols="30" rows="10"></textarea>
                     </div>
+
+                    {errors ? 
+                        <div class="error-container">
+                            {errors ? errors.map((error, i) => {
+                                return( <li key={i}>{error}</li> )
+                                }) 
+                            : null}
+                        </div>
+                    :null}
 
                    <div class="interview-button-container"><button id='interview-button'>Submit</button></div> 
 

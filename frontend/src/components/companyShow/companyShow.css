@@ -9,6 +9,20 @@
 * {
     font-family: 'Lato', sans-serif;
 }
+.company-show-center{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.company-show-outter-container{
+    max-width: 1900px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 
 .company-show-banner {
     height: 6rem;
@@ -23,7 +37,7 @@
     position: absolute;
     top: 3rem;
     left: 2.2%;
-    width: 7%;
+    width: 100px;
     
 }
 
@@ -37,17 +51,17 @@
     display: flex;
     justify-content: center;
     margin-top: 3rem;
-    width: 100vw;
+    width: 100%;
 }
 
 .company-show-name {
     position: absolute;
-    margin-top: 2rem;
+    margin-top: 1rem;
     font-weight: bolder;
     color: #0d0d0d;
     font-size: 32px;
     line-height: 26px;
-    margin-left: 11rem;
+    margin-left: 9rem;
 }
 
 .company-show-bottom-menu {
@@ -235,7 +249,7 @@
 }
 
 .company-overview-container {
-    width: 100vw;
+    width: 100%;
     height: 20%;
     margin-top: 1rem;
     display: flex;
@@ -303,7 +317,7 @@
 }
 
 .no-company-found{
-    width: 100vw;
+    width: 100%;
     height: 80vh;
     display: flex;
     justify-content: center;
@@ -313,7 +327,7 @@
 }
 
 .company-show-reviews-container {
-    width: 100vw;
+    width: 100%;
     height: 20%;
     margin-top: 1rem;
     display: flex;

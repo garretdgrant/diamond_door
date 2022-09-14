@@ -14,15 +14,16 @@ const AddReviewForm = () => {
     const {companyId} = useParams();
     const company = useSelector(state => state.companies[companyId])
     const user = useSelector(state=>state.session.user)
-    const [rating, setRating] = useState(5)
-    const [currentEmployee, setCurrentEmployee] = useState(false)
-    const [formerEmployee, setFormerEmployee] = useState(false)
+    const [rating, setRating] = useState(null)
+    const [currentEmployee, setCurrentEmployee] = useState(null)
+    const [formerEmployee, setFormerEmployee] = useState(null)
     const [employmentStatus, setEmploymentStatus] = useState('Full-Time')
     const [jobTitle, setJobTitle] = useState('')
     const [headline, setHeadline] = useState('')
     const [pros, setPros]= useState('')
     const [cons, setCons] = useState('')
     const[advice, setAdvice] = useState('')
+    const [errors, setErrors] = useState(null)
     useEffect(()=>{
         dispatch(fetchCompany(companyId)) 
     },[companyId])
@@ -62,7 +63,21 @@ const AddReviewForm = () => {
             advice
 
         }
-        dispatch(createReview(review)).then(()=> history.push(`/companies/${companyId}`))
+        dispatch(createReview(review))
+            .then(()=> history.push(`/companies/${companyId}`))
+            .catch( async (res) => {
+                let data;
+        try {
+          // .clone() essentially allows you to read the response body twice
+          data = await res.clone().json();
+        } catch {
+          data = await res.text(); 
+        }
+        if (data?.errors) setErrors(data.errors);
+        else if (data) setErrors([data]);
+        else setErrors([res.statusText]);
+
+            })
     }
 
     const handleRating = rating => {
@@ -100,7 +115,7 @@ const AddReviewForm = () => {
     const handleHeadline = e => {
         setHeadline(e.target.value)
     }
-
+    if(!company) return null;
     return (
         <>
             <div className='add-form-outter-container'>
@@ -183,7 +198,15 @@ const AddReviewForm = () => {
                                        value={advice} onChange={handleTextAreaInputs}/>
                                 <br />
                             </div>
-
+                            
+                            {errors ? 
+                                <div class="error-container">
+                                    {errors ? errors.map((error, i) => {
+                                    return( <li key={i}>{error}</li> )
+                                        }) : null}
+                                </div>
+                            :null}
+                           
                             <div class="add-form-button-container"><button>Submit Review</button></div>
                         </form>
                     </div>
@@ -212,7 +235,7 @@ const AddReviewForm = () => {
                 </div>
             </div>
 
-            {console.log('status from form: ', 'Former: ', formerEmployee, 'Current: ',currentEmployee)}
+            {console.log(errors)}
         </>
     )
 }
