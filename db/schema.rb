@@ -59,14 +59,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_13_205247) do
   create_table "interviews", force: :cascade do |t|
     t.bigint "company_id"
     t.bigint "user_id"
+    t.string "experience", null: false
     t.string "title", null: false
-    t.boolean "offer", default: false
-    t.boolean "accepted", default: false
-    t.boolean "experience", default: true
+    t.text "process", null: false
     t.string "difficulty", null: false
-    t.text "application", null: false
-    t.text "interview", null: false
+    t.string "offer", null: false
     t.text "questions", null: false
+    t.text "answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["company_id"], name: "index_interviews_on_company_id"

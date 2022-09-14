@@ -3,8 +3,10 @@ import thunk from "redux-thunk";
 import companiesReducer from "./companies";
 import sessionReducer from "./session";
 import reviewsReducer from "./reviews";
+import interviewsReducer from "./interviews";
 
 const rootReducer = combineReducers({
+    interviews: interviewsReducer,
     reviews: reviewsReducer,
     session: sessionReducer,
     companies: companiesReducer

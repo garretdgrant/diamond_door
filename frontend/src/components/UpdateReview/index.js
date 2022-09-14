@@ -11,10 +11,9 @@ import './UpdateReview.css'
 const UpdateReviewForm = () => {
     const dispatch = useDispatch();
     const history = useHistory();
-    const {reviewId} = useParams();
+    const {reviewId, companyId} = useParams();
     const review = useSelector(state => state.reviews[reviewId])
     const user = useSelector(state=>state.session.user)
-    const companyId = review.companyId;
     const company = useSelector(state=> state.companies[companyId])
     const [rating, setRating] = useState(review.rating)
     const [currentEmployee, setCurrentEmployee] = useState(review.currentEmployee)

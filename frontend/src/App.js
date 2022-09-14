@@ -1,4 +1,5 @@
 import { Switch, Route } from "react-router-dom";
+import AddInterviewForm from "./components/AddInterviewForm";
 import AddReviewForm from "./components/AddReviewForm";
 import CompanyIndex from "./components/companyIndex";
 import CompanyShow from "./components/companyShow";
@@ -7,6 +8,7 @@ import LogOut from "./components/logOutButton";
 import Navigation from "./components/Navigation";
 import SignupFormPage from "./components/signUpForm";
 import Splash from "./components/splash";
+import UpdateInterviewForm from "./components/UpdateInterviewForm";
 import UpdateReviewForm from "./components/UpdateReview";
 import "./index.css"
 
@@ -33,6 +35,12 @@ function App() {
           </Route>
           <Route path='/update-review/:reviewId'>
             <UpdateReviewForm />
+          </Route>
+          <Route path='/add-interview/:companyId'>
+            <AddInterviewForm />
+          </Route>
+          <Route path='/update-interview/:interviewId/:companyId'>
+            <UpdateInterviewForm />
           </Route>
           <Route path = "/" >
             <SignupFormPage />

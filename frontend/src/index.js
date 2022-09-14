@@ -8,6 +8,7 @@ import configureStore from './store';
 import { fetchCompanies } from './store/companies';
 import csrfFetch, {restoreCSRF} from './store/csrf';
 import * as session from './store/session.js'
+import * as interview from './store/interviews.js'
 
 const store = configureStore();
 
@@ -17,6 +18,7 @@ if (process.env.NODE_ENV !== 'production') {
   window.restore = restoreCSRF;
   window.session = session;
   window.fetchCompanies = fetchCompanies;
+  window.interview = interview
 }
 
 function Root() {

@@ -28,6 +28,7 @@ class User < ApplicationRecord
     validates :session_token, uniqueness: true
 
     has_many :reviews
+    has_many :interviews
 
     def self.find_by_credentials(email, password) 
         User.find_by(email: email)&.authenticate(password)

@@ -70,13 +70,7 @@ const AddReviewForm = () => {
         console.log('Rating', rating)
     }
 
-    // const handleCurrentEmployee = e => {
-    //     console.log('Im in current employee change')
-    //     setCurrentEmployee(!currentEmployee)
-    //     setFormerEmployee(!currentEmployee)
-    //     console.log(currentEmployee , formerEmployee)
-    // }
-
+ 
     const handleJobTitle = e => {
         setJobTitle(e.target.value)
         console.log(jobTitle)

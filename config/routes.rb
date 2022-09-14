@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resource :session, only: [:show, :create, :destroy]
     resources :companies, only: [:index, :show]
     resources :reviews, only: [:update, :destroy, :create]
-    get "/reviews/user/:user_id", to: "reviews#user_index"
+    resources :interviews, only: [:show, :create, :update, :destroy]
   end
 
 end

@@ -2,39 +2,25 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, useParams, Link, useHistory } from 'react-router-dom';
 import { fetchCompany } from '../../store/companies';
-import { deleteReview } from '../../store/reviews';
-import {VscTrash} from 'react-icons/vsc';
-import {BsPencilSquare} from 'react-icons/bs'
 import ReactStars from 'react-rating-stars-component';
-import './companyShow.css';
+import ReviewShow from '../ReviewShow';
+import InterviewShow from '../InterviewShow';
 
 
 const CompanyShow = () => {
     const {companyId}= useParams();
     const company = useSelector(state => state.companies[companyId])
     const reviews = Object.values(useSelector(state=> state.reviews))
+    const interviews = Object.values(useSelector(state=> state.interviews))
     const sessionUser = useSelector(state => state.session.user)
-    const user = useSelector(state=>state.session.user)
     const dispatch = useDispatch();
-    const history = useHistory();
+    const [show,setShow] = useState(true);
     
     useEffect(()=>{
         dispatch(fetchCompany(companyId))
     },[companyId])
     if (!sessionUser) return <Redirect to="/login" />;
 
-    const handleDeleteReview = (e, reviewId) => {
-        e.preventDefault();
-        console.log(e)
-        console.log(reviewId)
-        dispatch(deleteReview(reviewId))
-
-    }
-
-    const handleUpdateReview = (e, reviewId) => {
-        e.preventDefault();
-        history.push(`/update-review/${reviewId}`)
-    }
 
     const averageRating = () => {
         let sum = 0
@@ -58,16 +44,18 @@ const CompanyShow = () => {
                         <div className='company-show-menu-left'>
                             <div className='company-show-overview'> <p>icon</p> Overview</div>
                             <span className='company-show-break'></span>
-                            <div className='company-show-reviews'> <p>{reviews.length}</p> Reviews</div>
+                             <div className='company-show-reviews' onClick={()=> {setShow(true); console.log(show)}}> <p>{reviews.length}</p> Reviews</div>
                             <span className='company-show-break'></span>
-                            <div className='company-show-jobs'> <p>###</p> Jobs</div>
+                            <div className='company-show-jobs' onClick={()=> {setShow(false); console.log(show)}}> <p>###</p> Interviews</div>
                         </div>
                         <div className='company-show-menu-right'>
                             <div className='company-show-follow'>Follow</div>
-                            <Link className='company-show-add-review' to={`/add-review/${company.id}`}>
+                            <Link className='company-show-add-review' 
+                            to={ show ? `/add-review/${company.id}` : `/add-interview/${company.id}`} >
                                 <div className='company-show-add-review-div'> 
                                     <span className='company-review-plus'>+</span>
-                                    <p className='add-review-text'>Add a Review</p> 
+                                    <p className='add-review-text'>
+                                        {show ? "Add a Review " : "Add Interview"}</p> 
                                 </div>
                              </Link>
                         </div>
@@ -114,11 +102,13 @@ const CompanyShow = () => {
                     <p className='company-show-about'>{`${company.about}`}</p>
                 </div>
             </div>
-
+            
+            
             <div className='company-show-reviews-container'>
-                <div className='company-show-reviews-box'>
+                {show ? 
+                <div className='company-attached'>
                     <h1 className='company-overview-header'>{company.name} Reviews</h1>
-                    <div class="reviews-main-header-stars">
+                    <div className="reviews-main-header-stars">
                         <h1>{parseFloat(averageRating()).toFixed(1)}</h1>
                         <span><ReactStars
                             count={5}
@@ -128,41 +118,14 @@ const CompanyShow = () => {
                             activeColor="#0caa41"
                             />
                         </span>
-                    </div>
+                    </div>   
+                </div>  :   <div className='company-attached'>
+                    <h1 className='company-overview-header'>{company.name} Interview Questions</h1> 
+                </div> }
 
-                </div>
-                {reviews.map( review => {return(
-                    <>
-                        <div className='company-show-reviews-box'>
-
-                            <div className='individual-review-container'>
-                                <p className='rating-stars'>
-                                    {parseFloat(review.rating).toFixed(1)} 
-                                  <ReactStars
-                                    count={5}
-                                    size={20}
-                                    edit={false}
-                                    value={review.rating}
-                                    activeColor="#0caa41"
-                                    />
-                                </p> 
-                                <p className='review-current-employee'>{review.currentEmployee ? 'current employee ' : 'former employee '}
-                                  for {Math.floor(Math.random()*10) + 1} years
-                                </p> 
-                                <p className='review-headline'>"{review.headline}"</p>
-                                <p className='review-job-title'>{review.jobTitle}</p> 
-                                <p className='pro-con-advice-header'>Pros</p> <p>{review.pros}</p><br />
-                                <p className='pro-con-advice-header'>Cons</p> <p>{review.cons}</p>
-                                <p className='pro-con-advice-header'>Advice to Management</p><p>{review.advice}</p>
-                                <br />
-                            </div>
-                                <div class="show-button-container">
-                                    {user.id === review.userId ? <button className='update-review-button' value={review.id} onClick={(e)=>handleUpdateReview(e,review.id)}><BsPencilSquare /></button>  : null}
-                                    {user.id === review.userId ? <button className='delete-review-button' value={review.id} onClick={(e)=>handleDeleteReview(e,review.id)}><VscTrash values={`${review.id}`}/></button>  : null}
-                                </div>
-                        </div>
-                    </>
-                    )})}
+                {show ?  reviews.map( review => {return(<ReviewShow review={review} key={review.id}/>)}) : 
+                interviews.map(interview => {return <InterviewShow interview={interview} key={interview.id} user={sessionUser}/> })}
+              
             </div>
         </>
     )
