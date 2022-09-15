@@ -67,9 +67,10 @@ function LoginFormPage() {
         
             <button type="submit">Log In</button>
             <button onClick={handleDemo}>Demo Log In</button>
+            <a className='sign-up-link-on-login' href="/signup">No Account? Sign Up!</a>
         </div>
         </form>
-        {console.log(errors)}
+    
     </>
   );
 }

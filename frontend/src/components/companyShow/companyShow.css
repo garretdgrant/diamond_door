@@ -21,6 +21,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
 }
 
 
@@ -428,6 +429,7 @@
 .individual-review-container .pro-con-advice-header {
     color: #20262e;
     margin-bottom: 0rem;
+    font-weight: bold;
 }
 
 .reviews-main-header-stars{

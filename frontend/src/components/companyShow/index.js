@@ -15,14 +15,8 @@ const CompanyShow = () => {
     const sessionUser = useSelector(state => state.session.user)
     const dispatch = useDispatch();
     const [show,setShow] = useState(true);
+    const [avg, setAvg] = useState();
     
-    useEffect(()=>{
-        dispatch(fetchCompany(companyId))
-    },[companyId])
-    
-    if (!sessionUser) return <Redirect to="/login" />;
-
-
     const averageRating = () => {
         let sum = 0
         for (let i = 0; i < reviews.length; i++){
@@ -31,7 +25,32 @@ const CompanyShow = () => {
         }
         return sum/reviews.length
     }
+    useEffect(()=>{
+        dispatch(fetchCompany(companyId))
+        setAvg(averageRating())
+        
+    },[companyId])
     
+    
+    
+
+    useEffect(()=>{
+       setAvg(averageRating())
+       const stars= document.querySelector('.stars')
+       const spans = document.querySelectorAll('.stars *')
+       if (spans){
+        spans.forEach((span, index)=>{
+
+            if(index < Math.round(averageRating())) span.style.color = '#0caa41';
+            else span.style.color = 'grey';
+        })
+       }
+       
+       
+   
+    },[reviews])
+
+    if (!sessionUser) return <Redirect to="/login" />;
     const handleShow = (bool) => {
         setShow(bool);
         
@@ -47,8 +66,8 @@ const CompanyShow = () => {
         
 
     }
+    if (!company || !reviews) return (<></>);
 
-    if (company && reviews){
          return (
         <>
             <div className='company-show-center'>
@@ -125,14 +144,18 @@ const CompanyShow = () => {
                         <div className='company-attached'>
                             <h1 className='company-overview-header'>{company.name} Reviews</h1>
                             <div className="reviews-main-header-stars">
-                                <h1>{parseFloat(averageRating()).toFixed(1)}</h1>
+                                {avg ? 
+                                    <h1>{parseFloat(avg).toFixed(1)}</h1>
+                                : <h1>N/A</h1> }
                                 <span><ReactStars
+                                    classNames={'stars'}
                                     count={5}
                                     size={32}
                                     edit={false}
-                                    value={Math.round(averageRating())}
+                                    value={avg}
                                     activeColor="#0caa41"
                                     />
+                                    {console.log(avg, "avg")}
                                 </span>
                             </div>   
                         </div>  :   <div className='company-attached'>
@@ -147,11 +170,7 @@ const CompanyShow = () => {
             </div>
         </>
     )
-    } else {
-        return (<>
-        <h1 className='no-company-found'>Page Not Found</h1>
-        </>)
-    }
+    
    
 }
 

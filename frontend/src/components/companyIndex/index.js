@@ -16,7 +16,7 @@ const CompanyIndex = () => {
     },[])
 
     if (!sessionUser) return <Redirect to="/login" />;
-
+    if(!companies) return null;
     return (
         <>
             
@@ -24,13 +24,10 @@ const CompanyIndex = () => {
             <div className='parent-companies-container'>
                  <h1 className='companies-index-header'>Companies Recommended for You</h1>
                 <div className='companies-container'>
-                        {companies.map(company => {
-                            return(
-                              
-                                    <CompanyInfo company={company} key={company.id} />
-                              
-                            )
-                        })}
+                        {companies.map(company => (
+                            <CompanyInfo company={company} key={company.id} />
+                             )  
+                        )}
                 </div>
             </div>
         </>

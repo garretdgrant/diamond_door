@@ -35,6 +35,20 @@ const UpdateReviewForm = () => {
         if (companyId) dispatch(fetchCompany(companyId)) 
     },[companyId])
 
+    useEffect(()=>{
+        const spans = document.querySelectorAll('.stars *')
+        if (spans){
+         spans.forEach((span, index)=>{
+ 
+             if(index < rating) span.style.color = '#0caa41';
+             else span.style.color = 'grey';
+         })
+        }
+        
+        
+    
+     },[rating])
+
 
     const setLocalStates = () => {
         console.log(review)
@@ -105,14 +119,12 @@ const UpdateReviewForm = () => {
 
     const handleRating = rating => {
         setRating(rating)
-        console.log('Rating', rating)
     }
 
  
 
     const handleJobTitle = e => {
         setJobTitle(e.target.value)
-        console.log(jobTitle)
     }
 
     const handleTextAreaInputs = e => {
@@ -151,7 +163,14 @@ const UpdateReviewForm = () => {
                         <form className='add-form' onSubmit={handleSubmit}>
                             <div class="overall-rating">
                                 <p>Overall Rating</p>
-                                <ReactStars  size={40} count={5} value={rating} onChange={handleRating} activeColor={`#0caa41`}/>
+                                <ReactStars  
+                                classNames={'stars'}
+                                size={40} 
+                                count={5} 
+                                value={rating} 
+                                onChange={handleRating} 
+                                activeColor={`#0caa41`}
+                                />
                             </div>
                             {/* <label > {rating}
                                 <input type='range' min='1' max='5' onClick={handleRating} />
@@ -269,3 +288,7 @@ const UpdateReviewForm = () => {
 }
 
 export default UpdateReviewForm;
+
+
+// toggle signup/login, 
+//heroku - need diego

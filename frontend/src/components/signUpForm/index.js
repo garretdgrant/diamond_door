@@ -127,6 +127,7 @@ function SignupFormPage() {
         
         <button type="submit">Sign Up</button>
         <button onClick={handleDemo}>Demo Log In</button>
+        <a className="login-link-on-signup" href="/login">Already have an account? Log In!</a>
         </div>
 
         </form>
