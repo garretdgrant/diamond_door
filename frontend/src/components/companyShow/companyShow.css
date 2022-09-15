@@ -132,7 +132,8 @@
     align-items: center;
     justify-content: center;
     font-family: 'Lato', sans-serif;
-
+    border-bottom: solid #0caa41;
+   
 }
 
 .company-show-jobs {
@@ -141,7 +142,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
 }
 
 .company-show-overview {
@@ -356,6 +356,14 @@
     cursor: pointer;
     border: none;
     color: #20262e;
+}
+
+.update-review-button:hover{
+    color: #0caa41;
+}
+
+.delete-review-button:hover{
+    color: #0caa41;
 }
 
 .show-button-container{

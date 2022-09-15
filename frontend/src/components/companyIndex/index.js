@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import {fetchCompanies} from '../../store/companies'
 import { Redirect, Link } from 'react-router-dom';
+import CompanyInfo from './CompanyInfo';
 
 
 const CompanyIndex = () => {
@@ -25,19 +26,9 @@ const CompanyIndex = () => {
                 <div className='companies-container'>
                         {companies.map(company => {
                             return(
-                                <>
-                                    <Link to={`/companies/${company.id}`}>
-                                       <div className={`${company.name}-container`} >
-                                        <img src={company.photoUrl} alt="" />
-                                        <li  key={company.id}>{company.name}</li>
-                                        <p className='companies-index-rating'>rating</p>
-                                        <span className='companies-index-counts'>jobs - reviews</span>
-                                        <p>{company.about}</p>
-                                        </div>
-                                    </Link>
-                                 
-                                
-                                </>
+                              
+                                    <CompanyInfo company={company} key={company.id} />
+                              
                             )
                         })}
                 </div>

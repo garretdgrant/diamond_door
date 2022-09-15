@@ -25,6 +25,7 @@ const UpdateReviewForm = () => {
     const [cons, setCons] = useState(null)
     const[advice, setAdvice] = useState(null)
     const [errors, setErrors] = useState(null)
+    
     useEffect(()=>{
         dispatch(fetchReview(reviewId)) 
     },[reviewId])
@@ -33,6 +34,22 @@ const UpdateReviewForm = () => {
         console.log(companyId)
         if (companyId) dispatch(fetchCompany(companyId)) 
     },[companyId])
+
+
+    const setLocalStates = () => {
+        console.log(review)
+        setRating(review.rating)
+        setCurrentEmployee(review.currentEmployee)
+        setFormerEmployee(review.formerEmployee)
+        setEmploymentStatus(review.employmentStatus)
+        setJobTitle(review.jobTitle)
+        setHeadline(review.headline)
+        setPros(review.pros)
+        setCons(review.cons)
+        setAdvice(review.advice)
+     }
+
+    useEffect(()=>{if(review) setLocalStates()},[review]);
 
     const handleCurrentEmployee = (e) =>{
         console.log(e.target)

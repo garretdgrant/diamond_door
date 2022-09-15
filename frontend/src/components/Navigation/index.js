@@ -31,9 +31,9 @@ const Navigation = () => {
 
 
                 <div className='personal-links'>
-                    <div className='gitHub'><a href="github.com"><VscGithub /></a></div>
+                    <div className='gitHub'><a href="https://github.com/garretdgrant"><VscGithub /></a></div>
                     
-                    <div className='linkedin'><a href="linkedin.com"><AiOutlineLinkedin /></a></div> 
+                    <div className='linkedin'><a href="https://www.linkedin.com/in/garret-d-grant/"><AiOutlineLinkedin /></a></div> 
                    
                     <div className='portfolio'> <a href="portfolio.com"><VscBriefcase /></a></div>
                 </div>
@@ -42,8 +42,8 @@ const Navigation = () => {
                    
                         <div className='nav-modal-container'>
                             <div className='nav-modal'>
-                                <button>Profile</button>
-                                <button>button</button>
+                                {/* <button>Profile</button> */}
+                                {/* <button>button</button> */}
                                 <button onClick={handleLog}>{user ? 'Log Out' : 'Sign In'}</button>
                             </div>
                             <VscAccount  className='profile-icon'/>

@@ -31,7 +31,22 @@ const CompanyShow = () => {
         }
         return sum/reviews.length
     }
- 
+    
+    const handleShow = (bool) => {
+        setShow(bool);
+        
+        const rev = document.querySelector('.company-show-reviews');
+        const int = document.querySelector('.company-show-jobs');
+        if (!bool){
+            int.style.borderBottom = 'solid #0caa41'; 
+            rev.style.border = 'none';
+        } else {
+            int.style.borderBottom = null;
+            rev.style.border = null;
+        } 
+        
+
+    }
 
     if (company && reviews){
          return (
@@ -45,12 +60,12 @@ const CompanyShow = () => {
                             <div className='company-show-name'><h1 > {company.name}</h1></div>
                             <div className='company-show-bottom-menu'>
                                 <div className='company-show-menu-left'>
-                                    <div className='company-show-reviews' onClick={()=> {setShow(true)}}> <p>{reviews.length}</p> Reviews</div>
+                                    <div className='company-show-reviews' onClick={(e)=> handleShow(true)}> <p>{reviews.length}</p> Reviews</div>
                                     <span className='company-show-break'></span>
-                                    <div className='company-show-jobs' onClick={()=> {setShow(false)}}> <p>{interviews.length}</p> Interviews</div>
+                                    <div className='company-show-jobs' onClick={(e)=> handleShow(false)}> <p>{interviews.length}</p> Interviews</div>
                                 </div>
                                 <div className='company-show-menu-right'>
-                                    <div className='company-show-follow'>Follow</div>
+                                    {/* <div className='company-show-follow'>Follow</div> */}
                                     <Link className='company-show-add-review' 
                                     to={ show ? `/add-review/${company.id}` : `/add-interview/${company.id}`} >
                                         <div className='company-show-add-review-div'> 
@@ -115,7 +130,7 @@ const CompanyShow = () => {
                                     count={5}
                                     size={32}
                                     edit={false}
-                                    value={parseFloat(averageRating()).toFixed(1)}
+                                    value={Math.round(averageRating())}
                                     activeColor="#0caa41"
                                     />
                                 </span>
@@ -125,7 +140,7 @@ const CompanyShow = () => {
                         </div> }
 
                         {show ?  reviews.map( review => {return(<ReviewShow review={review} key={review.id}/>)}) : 
-                        interviews.map(interview => {return <InterviewShow interview={interview} key={interview.id} user={sessionUser}/> })}
+                        interviews.map((interview, index) => {return <InterviewShow interview={interview} key={interview.id} index={index} user={sessionUser}/> })}
                     
                     </div>
                 </div>

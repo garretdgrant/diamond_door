@@ -54,7 +54,7 @@
 
 .companies-container p{
     font-family: 'Times New Roman', Times, serif ;
-    line-height: 1.75rem;
+    line-height: 3em;
     text-overflow: ellipsis;
     display: -webkit-box;
     overflow: hidden;
