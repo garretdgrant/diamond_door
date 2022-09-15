@@ -21,7 +21,6 @@ class Api::InterviewsController < ApplicationController
     end
 
     def update
-        debugger
         @interview = Interview.find_by(id: interview_params[:id])
         if @interview.update(interview_params)
             render :create
@@ -38,7 +37,6 @@ class Api::InterviewsController < ApplicationController
 
     private
     def interview_params
-        # debugger
         params.require(:interview)
         .permit(:id, :title, :company_id, :user_id, :experience, :process, :difficulty, :offer, 
             :questions, :answer, :created_at)

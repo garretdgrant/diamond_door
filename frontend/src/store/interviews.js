@@ -29,7 +29,6 @@ export const updateInterview = (interview) => async dispatch => {
     body: JSON.stringify(interview)
   })
   const payload = await response.json();
-  debugger
   dispatch(addInterview(payload))
 }
 

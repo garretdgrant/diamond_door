@@ -34,7 +34,7 @@ const AddInterviewForm = () => {
         let icon3 = document.querySelector('#negative')
         let text = document.querySelector('.interview-exp-text')
      
-        console.log(text)
+    
        switch(experience){
         case 'positive':
             icon1.style.backgroundColor = '#0caa41'

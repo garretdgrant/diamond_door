@@ -12,7 +12,6 @@ const Navigation = () => {
     const history = useHistory();
     const handleLog =(e)=>{
         e.preventDefault();
-        console.log('inside logout')
         if (user) dispatch(logout()).then(
             <Redirect to={'/login'}/>
         );

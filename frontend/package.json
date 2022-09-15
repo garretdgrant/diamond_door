@@ -17,8 +17,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "build": "npm install --prefix frontend && npm run build --prefix frontend",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -35,5 +34,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  }, 
+   "engines": {
+     "node": "16.16.0"
+   }
 }

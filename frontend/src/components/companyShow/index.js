@@ -154,7 +154,6 @@ const CompanyShow = () => {
                                     value={avg}
                                     activeColor="#0caa41"
                                     />
-                                    {console.log(avg, "avg")}
                                 </span>
                             </div>   
                         </div>  :   <div className='company-attached'>

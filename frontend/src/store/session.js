@@ -69,7 +69,6 @@ const storeCSRFToken = response => {
 
 const sessionReducer = (state = initialState, action) => {
     Object.freeze(state);
-    // debugger
     const nextState = { ...state };
   
     switch(action.type) {

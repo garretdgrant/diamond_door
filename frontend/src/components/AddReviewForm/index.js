@@ -29,7 +29,6 @@ const AddReviewForm = () => {
     },[companyId])
 
     const handleCurrentEmployee = (e) =>{
-        console.log(e.target)
         switch (e.target.id){
             case 'current-employee':
                 setCurrentEmployee(true);
@@ -40,13 +39,12 @@ const AddReviewForm = () => {
                 setFormerEmployee(true);
                 break;
         }
-        console.log(currentEmployee, formerEmployee)
     }
 
     const handleEmployeeStatus = (e) =>{
         setEmploymentStatus(e.target.value)
-        console.log('Employment Status',employmentStatus)
     }
+    
     const handleSubmit = (e) => {
         e.preventDefault();
         const review = {
@@ -82,28 +80,23 @@ const AddReviewForm = () => {
 
     const handleRating = rating => {
         setRating(rating)
-        console.log('Rating', rating)
     }
 
  
     const handleJobTitle = e => {
         setJobTitle(e.target.value)
-        console.log(jobTitle)
     }
 
     const handleTextAreaInputs = e => {
         switch (e.target.id){
             case 'add-form-pros':
                 setPros(e.target.value)
-                console.log(pros)
                 break;
             case 'add-form-cons':
                 setCons(e.target.value)
-                console.log(cons)
                 break;
             case 'add-form-advice':
                 setAdvice(e.target.value)
-                console.log(advice)
                 break;
             default:
                 break;
@@ -234,8 +227,6 @@ const AddReviewForm = () => {
                     </div>
                 </div>
             </div>
-
-            {console.log(errors)}
         </>
     )
 }

@@ -30,7 +30,6 @@ export const updateReview = (review) => async dispatch => {
     body: JSON.stringify(review)
   })
   const payload = await response.json();
-  debugger
   dispatch(addReview(payload))
 }
 

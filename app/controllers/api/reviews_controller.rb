@@ -37,7 +37,6 @@ class Api::ReviewsController < ApplicationController
 
     private
     def review_params
-        # debugger
         params.require(:review)
         .permit(:id, :company_id, :user_id, :rating, :current_employee, :former_employee, :employment_status,
                     :job_title, :headline, :pros, :cons, :advice)

@@ -31,7 +31,6 @@ const UpdateReviewForm = () => {
     },[reviewId])
     
     useEffect(()=>{
-        console.log(companyId)
         if (companyId) dispatch(fetchCompany(companyId)) 
     },[companyId])
 
@@ -51,7 +50,6 @@ const UpdateReviewForm = () => {
 
 
     const setLocalStates = () => {
-        console.log(review)
         setRating(review.rating)
         setCurrentEmployee(review.currentEmployee)
         setFormerEmployee(review.formerEmployee)
@@ -66,7 +64,6 @@ const UpdateReviewForm = () => {
     useEffect(()=>{if(review) setLocalStates()},[review]);
 
     const handleCurrentEmployee = (e) =>{
-        console.log(e.target)
         switch (e.target.id){
             case 'current-employee':
                 setCurrentEmployee(true);
@@ -77,13 +74,12 @@ const UpdateReviewForm = () => {
                 setFormerEmployee(true);
                 break;
         }
-        console.log(currentEmployee, formerEmployee)
     }
 
     const handleEmployeeStatus = (e) =>{
         setEmploymentStatus(e.target.value)
-        console.log('Employment Status',employmentStatus)
     }
+
     const handleSubmit = (e) => {
         e.preventDefault();
         const review = {
@@ -131,15 +127,12 @@ const UpdateReviewForm = () => {
         switch (e.target.id){
             case 'add-form-pros':
                 setPros(e.target.value)
-                console.log(pros)
                 break;
             case 'add-form-cons':
                 setCons(e.target.value)
-                console.log(cons)
                 break;
             case 'add-form-advice':
                 setAdvice(e.target.value)
-                console.log(advice)
                 break;
             default:
                 break;
@@ -281,8 +274,6 @@ const UpdateReviewForm = () => {
                     </div>
                 </div>
             </div>
-
-            {console.log('status from form: ', 'Former: ', formerEmployee, 'Current: ',currentEmployee)}
         </>
     )
 }
