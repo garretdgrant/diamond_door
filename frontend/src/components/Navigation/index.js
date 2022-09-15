@@ -1,13 +1,25 @@
 import './Navigation.css'
 import {VscAccount, VscGithub, VscBriefcase} from  'react-icons/vsc'
 import {AiOutlineLinkedin} from 'react-icons/ai'
-import { useState } from 'react'
-import { NavLink, Link } from 'react-router-dom'
-import LogOut from '../logOutButton'
+import { Link, useHistory, Redirect } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { logout } from '../../store/session'
 
 
 const Navigation = () => {
-    const [showMenu,setShowMenu] = useState(false);
+    const dispatch = useDispatch();
+    const user = useSelector(state=> state.session.user)
+    const history = useHistory();
+    const handleLog =(e)=>{
+        e.preventDefault();
+        console.log('inside logout')
+        if (user) dispatch(logout()).then(
+            <Redirect to={'/login'}/>
+        );
+        history.push('/login')
+      
+    }
+
 
     return (
         <>
@@ -27,8 +39,16 @@ const Navigation = () => {
                 </div>
 
                 <div className='right-side'>
-                    <div><VscAccount className='profile-icon'/></div>
-                {/* <div className='nav-logout'><LogOut /></div> */}
+                   
+                        <div className='nav-modal-container'>
+                            <div className='nav-modal'>
+                                <button>Profile</button>
+                                <button>button</button>
+                                <button onClick={handleLog}>{user ? 'Log Out' : 'Sign In'}</button>
+                            </div>
+                            <VscAccount  className='profile-icon'/>
+                       
+                    </div>
                 </div>
 
             </div>

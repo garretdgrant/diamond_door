@@ -4,7 +4,6 @@ import AddReviewForm from "./components/AddReviewForm";
 import CompanyIndex from "./components/companyIndex";
 import CompanyShow from "./components/companyShow";
 import LoginFormPage from "./components/loginFormPage";
-import LogOut from "./components/logOutButton";
 import Navigation from "./components/Navigation";
 import SignupFormPage from "./components/signUpForm";
 import Splash from "./components/splash";

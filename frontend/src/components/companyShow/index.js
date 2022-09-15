@@ -19,6 +19,7 @@ const CompanyShow = () => {
     useEffect(()=>{
         dispatch(fetchCompany(companyId))
     },[companyId])
+    
     if (!sessionUser) return <Redirect to="/login" />;
 
 

@@ -8,12 +8,13 @@ import { Redirect, Link } from 'react-router-dom';
 const CompanyIndex = () => {
     const companies = Object.values(useSelector(state => state.companies))//.slice(0,2)
     const dispatch = useDispatch();
+    const sessionUser = useSelector(state=>state.session.user)
 
     useEffect(()=>{
         dispatch(fetchCompanies())
     },[])
 
-
+    if (!sessionUser) return <Redirect to="/login" />;
 
     return (
         <>
@@ -23,7 +24,6 @@ const CompanyIndex = () => {
                  <h1 className='companies-index-header'>Companies Recommended for You</h1>
                 <div className='companies-container'>
                         {companies.map(company => {
-                            {console.log(company.photoUrl)}
                             return(
                                 <>
                                     <Link to={`/companies/${company.id}`}>
