@@ -36,7 +36,6 @@ const CompanyShow = () => {
 
     useEffect(()=>{
        setAvg(averageRating())
-       const stars= document.querySelector('.stars')
        const spans = document.querySelectorAll('.stars *')
        if (spans){
         spans.forEach((span, index)=>{
@@ -162,8 +161,8 @@ const CompanyShow = () => {
                             <h1 className='company-overview-header'>{company.name} Interview Questions</h1> 
                         </div> }
 
-                        {show ?  reviews.map( review => {return(<ReviewShow review={review} key={review.id}/>)}) : 
-                        interviews.map((interview, index) => {return <InterviewShow interview={interview} key={interview.id} index={index} user={sessionUser}/> })}
+                        {show ?  reviews.map( review => {return(<ReviewShow companyName={company.name} review={review} key={review.id}/>)}) : 
+                        interviews.map((interview, index) => {return <InterviewShow companyName={company.name} interview={interview} key={interview.id} index={index} user={sessionUser}/> })}
                     
                     </div>
                 </div>

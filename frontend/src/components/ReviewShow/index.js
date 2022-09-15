@@ -8,15 +8,14 @@ import { deleteReview } from '../../store/reviews'
 
 
 
-const ReviewShow = ({review}) => {
+const ReviewShow = ({review, companyName}) => {
     const user =  useSelector(state=>state.session.user)
     const history = useHistory();
     const dispatch = useDispatch();
 
     const handleDeleteReview = (e, reviewId) => {
         e.preventDefault();
-        console.log(e)
-        console.log(reviewId)
+      if (window.confirm(`Are you sure you want to delete your review for ${companyName}`))
         dispatch(deleteReview(reviewId))
 
     }

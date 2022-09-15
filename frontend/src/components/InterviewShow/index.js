@@ -3,12 +3,11 @@ import {BsPencilSquare} from 'react-icons/bs'
 import {VscTrash} from 'react-icons/vsc';
 import { useDispatch } from 'react-redux';
 import { deleteInterview } from '../../store/interviews';
-import { Redirect, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import {BsCheck, BsDash, BsX} from 'react-icons/bs'
-import {AiOutlineMinus, AiOutlineClose, AiOutlineCheck} from 'react-icons/ai'
 
 
-const InterviewShow = ({interview, user, index}) => {
+const InterviewShow = ({interview, user, index, companyName}) => {
     const createdAt = new Date(interview.createdAt)
     const date = createdAt.toLocaleDateString();
     const dispatch = useDispatch();
@@ -24,6 +23,10 @@ const InterviewShow = ({interview, user, index}) => {
     function capitalizeFirstLetter(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
       }
+
+    const handleInterviewDelete = () =>{
+       if(window.confirm(`Are you sure you want to delete interview for ${companyName}`)) dispatch(deleteInterview(interview.id))
+    }
 
 
     return(
@@ -100,7 +103,7 @@ const InterviewShow = ({interview, user, index}) => {
                         {user.id === interview.userId ? <button className='update-review-button' value={interview.id} 
                         onClick={handleInterviewUpdate}><BsPencilSquare /></button>  : null}
                         {user.id === interview.userId ? <button className='delete-review-button' value={interview.id} 
-                            onClick={()=>{dispatch(deleteInterview(interview.id))}}><VscTrash /></button>  : null}
+                            onClick={handleInterviewDelete}><VscTrash /></button>  : null}
                     </div>
                 </div>
             </div>
