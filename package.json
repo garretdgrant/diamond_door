@@ -16,7 +16,7 @@
     "lib": "lib"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npm install --prefix frontend && npm run build --prefix frontend"
   },
   "repository": {
     "type": "git",
