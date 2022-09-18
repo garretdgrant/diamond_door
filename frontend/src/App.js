@@ -9,6 +9,7 @@ import SignupFormPage from "./components/signUpForm";
 import Splash from "./components/splash";
 import UpdateInterviewForm from "./components/UpdateInterviewForm";
 import UpdateReviewForm from "./components/UpdateReview";
+import { UserProfile } from "./components/UserProfile";
 import "./index.css"
 
 
@@ -40,6 +41,9 @@ function App() {
           </Route>
           <Route path='/update-interview/:interviewId/:companyId'>
             <UpdateInterviewForm />
+          </Route>
+          <Route path='/profile'>
+            <UserProfile />
           </Route>
           <Route path = "/" >
             <SignupFormPage />

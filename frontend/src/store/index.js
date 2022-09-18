@@ -4,12 +4,14 @@ import companiesReducer from "./companies";
 import sessionReducer from "./session";
 import reviewsReducer from "./reviews";
 import interviewsReducer from "./interviews";
+import followsReducer from "./follows";
 
 const rootReducer = combineReducers({
     interviews: interviewsReducer,
     reviews: reviewsReducer,
     session: sessionReducer,
-    companies: companiesReducer
+    companies: companiesReducer,
+    follows: followsReducer
 })
 
 let enhancer;

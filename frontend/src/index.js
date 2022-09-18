@@ -10,6 +10,7 @@ import csrfFetch, {restoreCSRF} from './store/csrf';
 import * as session from './store/session.js'
 import * as interview from './store/interviews.js'
 import * as review from './store/reviews.js'
+import * as follow from './store/follows.js'
 
 const store = configureStore();
 
@@ -21,6 +22,7 @@ if (process.env.NODE_ENV !== 'production') {
   window.fetchCompanies = fetchCompanies;
   window.interview = interview
   window.review = review;
+  window.follow = follow;
 }
 
 function Root() {

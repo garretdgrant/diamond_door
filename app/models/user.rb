@@ -29,6 +29,7 @@ class User < ApplicationRecord
 
     has_many :reviews
     has_many :interviews
+    has_many :follows
 
     def self.find_by_credentials(email, password) 
         User.find_by(email: email)&.authenticate(password)

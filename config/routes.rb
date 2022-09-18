@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     resources :companies, only: [:index, :show]
     resources :reviews, only: [:show, :update, :destroy, :create]
     resources :interviews, only: [:show, :create, :update, :destroy]
+    resources :follows, only: [:create, :show, :destroy]
   end
 
   get '*path', to: "static_pages#frontend_index"

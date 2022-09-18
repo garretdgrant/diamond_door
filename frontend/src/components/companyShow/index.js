@@ -5,6 +5,7 @@ import { fetchCompany } from '../../store/companies';
 import ReactStars from 'react-rating-stars-component';
 import ReviewShow from '../ReviewShow';
 import InterviewShow from '../InterviewShow';
+import { createFollow, deleteFollow, fetchFollows } from '../../store/follows';
 
 
 const CompanyShow = () => {
@@ -13,9 +14,13 @@ const CompanyShow = () => {
     const reviews = Object.values(useSelector(state=> state.reviews))
     const interviews = Object.values(useSelector(state=> state.interviews))
     const sessionUser = useSelector(state => state.session.user)
+    const follows = Object.values(useSelector(state => state.follows))
     const dispatch = useDispatch();
     const [show,setShow] = useState(true);
     const [avg, setAvg] = useState();
+    const [isFollowed, setIsFollowed] = useState(false)
+    const [followId,setFollowId] = useState(null);
+    console.log('Follows: ',follows)
     
     const averageRating = () => {
         let sum = 0
@@ -27,9 +32,16 @@ const CompanyShow = () => {
     }
     useEffect(()=>{
         dispatch(fetchCompany(companyId))
+        dispatch(fetchFollows(sessionUser.id))
         setAvg(averageRating())
-        
-    },[companyId])
+        follows.forEach(follow => {
+            console.log('inside follow loop')
+            if (follow.companyId === company.id){
+                setIsFollowed(true)
+                setFollowId(follow.id)
+            } 
+        })
+    },[companyId, follows.length])
     
     
     
@@ -44,10 +56,22 @@ const CompanyShow = () => {
             else span.style.color = 'grey';
         })
        }
-       
-       
-   
     },[reviews])
+
+    const handleFollow = (e,companyId) =>{
+        e.preventDefault();
+        if (!isFollowed){
+            dispatch(createFollow({
+                userId: sessionUser.id,
+                companyId,
+                isFollowing: true
+            }))
+        } else {
+            dispatch(deleteFollow(followId))
+            setIsFollowed(false);
+            setFollowId(null);
+        }
+    }
 
     if (!sessionUser) return <Redirect to="/login" />;
     const handleShow = (bool) => {
@@ -83,7 +107,10 @@ const CompanyShow = () => {
                                     <div className='company-show-jobs' onClick={(e)=> handleShow(false)}> <p>{interviews.length}</p> Interviews</div>
                                 </div>
                                 <div className='company-show-menu-right'>
-                                    {/* <div className='company-show-follow'>Follow</div> */}
+                                    <div className='company-show-follow' onClick={(e)=>handleFollow(e,company.id)}>
+                                       {isFollowed ? "Unfollow ": "Follow"}
+                                        
+                                    </div>
                                     <Link className='company-show-add-review' 
                                     to={ show ? `/add-review/${company.id}` : `/add-interview/${company.id}`} >
                                         <div className='company-show-add-review-div'> 

@@ -20,5 +20,6 @@ class Company < ApplicationRecord
     has_one_attached :logo
     has_many :reviews
     has_many :interviews
+    has_many :follows
     
 end

@@ -41,7 +41,7 @@ const Navigation = () => {
                    
                         <div className='nav-modal-container'>
                             <div className='nav-modal'>
-                                {/* <button>Profile</button> */}
+                                <button onClick={()=>history.push('/profile')}>Profile</button>
                                 {/* <button>button</button> */}
                                 <button onClick={handleLog}>{user ? 'Log Out' : 'Sign In'}</button>
                             </div>

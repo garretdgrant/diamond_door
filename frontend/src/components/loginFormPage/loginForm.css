@@ -88,3 +88,15 @@
     width: 100%;
     font-weight: bold;
 }
+
+.login-form .error-container {
+    position: absolute;
+}
+
+.login-error-flexer{
+    position: absolute;
+    bottom: 8rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}

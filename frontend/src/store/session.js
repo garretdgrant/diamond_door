@@ -30,7 +30,7 @@ const storeCSRFToken = response => {
     });
     const data = await response.json();
     storeCurrentUser(data.user);
-    dispatch(setCurrentUser(data.user));
+    dispatch(setCurrentUser(data));
     return response;
   };
 
@@ -74,7 +74,7 @@ const sessionReducer = (state = initialState, action) => {
     switch(action.type) {
       case SET_USER:
         if (action.payload){
-          return {user: {...action.payload }};
+          return {user: {...action.payload.user }};
         } else {
           return {user: null}
         }

@@ -15,6 +15,12 @@ class Api::UsersController < ApplicationController
     render :show
   end
 
+  def follows
+    @user = current_user
+    @follows = @user.follows
+    render :follows
+  end
+
   private
   def user_params
     params.require(:user)

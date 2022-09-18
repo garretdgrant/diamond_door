@@ -9,7 +9,7 @@ function LoginFormPage() {
   const sessionUser = useSelector(state => state.session.user);
   const [email, setemail] = useState('');
   const [password, setPassword] = useState('');
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState(null);
 
   if (sessionUser) return <Redirect to="/companies" />;
 
@@ -43,11 +43,7 @@ function LoginFormPage() {
             <h1 className='login-form-header'>
             Sign In to access to salaries and reviews
             </h1>
-                <div class="login-errors">
-                  <ul>
-                      {errors.map(error => <li key={error}>{error}</li>)}
-                  </ul>
-                </div>
+          
                 <input
                 type="text"
                 value={email}
@@ -64,11 +60,21 @@ function LoginFormPage() {
                 required
                 placeholder='Password'
                 />
+
         
             <button type="submit">Log In</button>
             <button onClick={handleDemo}>Demo Log In</button>
             <a className='sign-up-link-on-login' href="/signup">No Account? Sign Up!</a>
         </div>
+              {errors ? 
+              <div class="login-error-flexer">
+                <div class="error-container">
+                  <ul>
+                      {errors.map(error => <li key={error}>{error}</li>)}
+                  </ul>
+                </div>
+              </div>
+              : null}
         </form>
     
     </>
