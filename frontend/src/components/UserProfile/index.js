@@ -15,7 +15,7 @@ export const UserProfile = (props) => {
     const follows = Object.values(useSelector(state=>state.follows))
     const companies = useSelector(state=>state.companies)
     useEffect(()=>{
-        dispatch(fetchFollows(user.id))
+       if (user) dispatch(fetchFollows(user.id))
         dispatch(fetchCompanies())
     },[])
     
@@ -26,14 +26,14 @@ export const UserProfile = (props) => {
     return(
         <>
             <h1 className='profile-header' >Hello {user.fName}</h1>
+            <div className='profile-follows-header'><h1 >Companies you Follow</h1></div>
             <div className="profile-outter-container">
                 <div className="profile-company-flexer">
-                    <div className='profile-companies-container'>
-                        <h1 className='profile-follows-header'>Companies you Follow</h1>
+                    <div className='companies-container'>
                         {follows.map( follow =>(
-                            <div key={follow.id}>
+                            <span key={follow.id}>
                                 <CompanyInfo company={companies[follow.companyId]}  />
-                            </div>
+                            </span>
                             
                         ))}
                         </div>

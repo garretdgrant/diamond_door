@@ -41,8 +41,10 @@ const Navigation = () => {
                    
                         <div className='nav-modal-container'>
                             <div className='nav-modal'>
-                                <button onClick={()=>history.push('/profile')}>Profile</button>
-                                {/* <button>button</button> */}
+                                {user ? 
+                                    <button onClick={()=>history.push('/profile')}>Profile</button> 
+                                : null}
+                               
                                 <button onClick={handleLog}>{user ? 'Log Out' : 'Sign In'}</button>
                             </div>
                             <VscAccount  className='profile-icon'/>

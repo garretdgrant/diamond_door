@@ -118,11 +118,12 @@ height: 100%;
 .nav-modal-container:hover .nav-modal{
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
 }
 .nav-modal{
     position: absolute;
     display: none;
-    height: 75px;
+    height: fit-content;
     width: 200px;
     top: 100%;
     right: 0%;
@@ -143,16 +144,15 @@ height: 100%;
 }
 
 .nav-modal button{
-    width: fit-content;
     background-color: #fff;
     width: 100%;
     border: none;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     font-size: 20px;
-
-
+    color: #505863;
+    padding: 2rem;
 }
 
 .nav-modal button:hover{
