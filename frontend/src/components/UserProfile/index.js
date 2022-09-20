@@ -26,17 +26,18 @@ export const UserProfile = (props) => {
     return(
         <>
             <h1 className='profile-header' >Hello {user.fName}</h1>
-            <div className='profile-follows-header'><h1 >Companies you Follow</h1></div>
             <div className="profile-outter-container">
+            <div className='profile-follows-header'><h1 >Companies you Follow</h1></div>
                 <div className="profile-company-flexer">
-                    <div className='companies-container'>
-                        {follows.map( follow =>(
-                            <span key={follow.id}>
-                                <CompanyInfo company={companies[follow.companyId]}  />
-                            </span>
-                            
-                        ))}
-                        </div>
+                  
+                        <div className='profile-companies-container'>
+                            {follows.map( follow =>(
+                                <span key={follow.id}>
+                                    <CompanyInfo company={companies[follow.companyId]}  />
+                                </span> 
+                            ))}
+                            </div>
+                   
                 </div>
             </div>
 

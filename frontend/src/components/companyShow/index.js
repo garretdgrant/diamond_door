@@ -35,7 +35,6 @@ const CompanyShow = () => {
         dispatch(fetchFollows(sessionUser.id))
         setAvg(averageRating())
         follows.forEach(follow => {
-            console.log('inside follow loop')
             if (follow.companyId === company.id){
                 setIsFollowed(true)
                 setFollowId(follow.id)
@@ -89,7 +88,7 @@ const CompanyShow = () => {
         
 
     }
-    if (!company || !reviews) return (<></>);
+    if (!company || !reviews) return (<>No company or Reviews</>);
 
          return (
         <>
