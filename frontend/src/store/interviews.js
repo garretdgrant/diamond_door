@@ -49,7 +49,7 @@ export const fetchInterview = (interviewId) => async dispatch => {
 }
 
 
-const interviewsReducer = (state = {}, action) => {
+const interviewsReducer = (state = null, action) => {
     Object.freeze(state);
     const nextState = { ...state };
   

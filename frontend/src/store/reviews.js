@@ -51,7 +51,7 @@ export const fetchReview = (reviewId) => async dispatch => {
 
 
 
-const reviewsReducer = (state = {}, action) => {
+const reviewsReducer = (state = null, action) => {
     Object.freeze(state);
     const nextState = { ...state };
   

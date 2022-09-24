@@ -40,11 +40,13 @@ export const deleteFollow = (followId) => async dispatch => {
     dispatch(setCurrentUser(payload))
   }
 
-  const followsReducer = (state = {}, action) => {
+  const followsReducer = (state = null, action) => {
     Object.freeze(state);
     const nextState = { ...state };
     switch(action.type) {
       case SET_USER:
+        // debugger
+        if(!action.payload) return null
         return{...nextState,...action.payload.follows}
       case REMOVE_FOLLOW:
         delete nextState[action.payload]

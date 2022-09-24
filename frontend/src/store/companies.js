@@ -35,13 +35,13 @@ export const fetchCompany = (companyId) => async dispatch => {
   return response;
 }
   
-const companiesReducer = (state = {}, action) => {
+const companiesReducer = (state = null, action) => {
     Object.freeze(state);
     const nextState = { ...state };
   
     switch(action.type) {
       case SET_COMPANIES:
-        return {...action.payload };
+        return {...nextState, ...action.payload };
       case SET_COMPANY:
         nextState[action.payload.company.id] = action.payload.company
         return nextState

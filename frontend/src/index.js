@@ -36,13 +36,6 @@ function Root() {
   );
 }
 
-// ReactDOM.render(
-//   <React.StrictMode>
-//     <Root />
-//   </React.StrictMode>,
-//   document.getElementById('root')
-// );
-
 const renderApplication = () => {
   ReactDOM.render(
     <React.StrictMode>
