@@ -20,7 +20,6 @@ const CompanyShow = () => {
     const [avg, setAvg] = useState();
     const [isFollowed, setIsFollowed] = useState(false)
     const [followId,setFollowId] = useState(null);
-    console.log('Follows: ',follows)
     
     const averageRating = () => {
         let sum = 0
