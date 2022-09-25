@@ -21,8 +21,8 @@ function App() {
           <Route exact path="/login" >
             <LoginFormPage />
           </Route>
-          <Route exact path="/splash">
-            <Splash />
+          <Route exact path="/signup">
+            <SignupFormPage />
           </Route>
           <Route exact path='/companies'>
             <CompanyIndex />
@@ -46,7 +46,7 @@ function App() {
             <UserProfile />
           </Route>
           <Route path = "/" >
-            <SignupFormPage />
+            <LoginFormPage />
           </Route>
         </Switch>
     </>

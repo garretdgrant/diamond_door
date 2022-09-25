@@ -34,8 +34,6 @@ export const UserProfile = (props) => {
     if(!user) return <Redirect to={'/login'}/>
     return(
         <>
-            
-            <h1 className='profile-header' >Hello {user.fName}</h1>
         
             <div className="profile-outter-container">
             <div className='profile-follows-header'>
