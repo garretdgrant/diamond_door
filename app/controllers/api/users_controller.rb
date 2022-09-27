@@ -1,5 +1,6 @@
 class Api::UsersController < ApplicationController
-  wrap_parameters include: User.attribute_names + ['password']
+  wrap_parameters include: User.attribute_names + 
+  ['password'] +['fName'] + ['lName'] + ['jobTitle']
   def create
     @user = User.new(user_params)
     if @user.save
@@ -15,7 +16,23 @@ class Api::UsersController < ApplicationController
     render :show
   end
 
+  def update
+    @user = User.find_by(id: user_params[:id])
+    if @user.update(user_params)
+        render :show
+    else
+        render json: {errors: @user.errors.full_messages}, status: :unprocessable_entity   
+    end
+  end
+
+  def destroy
+    @user = User.find_by(id: params[:id])
+    @user.destroy!
+    render json: {message: 'success'}
+  end
+
   def follows
+
     @user = current_user
     @follows = @user.follows
     render :follows
@@ -24,7 +41,7 @@ class Api::UsersController < ApplicationController
   private
   def user_params
     params.require(:user)
-      .permit(:email, :password, :phone, :f_name,:l_name,:website, :about_me, :job_title, :skills)
+      .permit(:id, :email, :password, :phone, :f_name,:l_name,:website, :about_me, :job_title, :skills)
   end
 
  
@@ -32,18 +49,3 @@ class Api::UsersController < ApplicationController
 end
 
 
-# signupRequestOptions = {
-#   method: 'POST',
-#   headers: { 'Content-Type': 'application/json' },
-#   body: JSON.stringify({ 
-#     email: 'coolemail@hotmail.net', 
-#     password: 'starwars',
-#     f_name: 'Garret',
-#     l_name: 'Grant',
-#     phone: '5303917473',
-#     website: 'google.com',
-#     about_me: 'Im a software engineer',
-#     job_title: 'software engineer',
-#     skills: 'all the web dev you want '
-#   })
-# }

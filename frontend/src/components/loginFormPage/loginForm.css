@@ -10,13 +10,17 @@
     width: 100%;
 }
 
+.login-form-header{
+    /* width: 400px; */
+}
+
 
 .login-form::before {
     content: '';
     position:absolute;
     height: 100vh;
     width: 100%;
-    background-color: rgba(25, 25, 25, 0.247);
+    background-color: rgba(25, 25, 25, .03);
 }
 
 .login-inputs {

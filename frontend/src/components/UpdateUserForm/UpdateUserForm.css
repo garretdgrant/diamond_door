@@ -1,0 +1,87 @@
+.update-user-container{
+    /* background-color: aqua; */
+    width: 500px;
+    height: calc(100vh - 80px);
+    position: relative;
+    background-color: #fff;
+    border-radius: 3px;
+    box-shadow: 0 1px 1px 1px hsl(0deg 0% 50% / 30%);
+    padding: 2rem;
+
+}
+.update-user-page{
+    background-color: #eaeaea;
+}
+.update-user-page{
+    width: 100vw;
+    height: calc(100vh - 80px);
+    overflow: none;
+    display: flex;
+    justify-content: center;
+}
+
+.update-user-form{
+    width: 100%;
+    height: fit-content;
+}
+
+.update-user-inputs{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.update-user-inputs input {
+    height: 10%;
+    border-radius: 8px;
+    padding: 5px;
+    border: 1px solid #858c94;
+    color: #505863;
+    font-size: 18px;
+    height: 40px;
+    width: 80%;
+}
+
+.update-user-header{
+    color: #20262e;
+    font-size: 31px;
+    font-weight: 900;
+    line-height: 36px;
+}
+
+.update-user-buttons{
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+}
+
+.update-user-buttons button{
+    height: 40px;
+    border-color: transparent;
+    border-radius: 3px;
+    border-style: solid;
+    border-width: 1px;
+    background-color: #1861bf;
+    color: #fff;
+    font-family: 'Lato', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 24px;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    user-select: none;
+    display: inline-block;
+    min-width: 150px;
+    padding: 0;
+    position: relative;
+}
+

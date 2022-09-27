@@ -64,7 +64,7 @@
 
 .user-profile-box-icon > svg{
     font-size: 30px;
-
+    fill: #20262e;
 }
 
 .profile-user-box > *{
@@ -174,3 +174,15 @@
     font-weight: bold;
     font-family: "Lato",sans-serif;
 }
+
+.member-since{
+    display: flex;
+    justify-content: space-between;
+    width: 55%;
+}
+
+.member-since h1{
+    color: #20262e;
+    font-weight: 500;
+}
+

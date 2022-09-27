@@ -38,10 +38,10 @@ function LoginFormPage() {
   return (
     <>
         <form onSubmit={handleSubmit} className="login-form">
-        <img src="login-background.jpg" alt="" />
+         <img src="sessionBackground.jpg" alt="" />
             <div className='login-inputs'>
             <h1 className='login-form-header'>
-            Sign In to access to salaries and reviews
+            Sign In to access company reviews
             </h1>
           
                 <input

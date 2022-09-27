@@ -2,7 +2,7 @@ import './companyIndex.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import {fetchCompanies} from '../../store/companies'
-import { Redirect, Link } from 'react-router-dom';
+import { Redirect, Link, useHistory } from 'react-router-dom';
 import CompanyInfo from './CompanyInfo';
 
 
@@ -10,12 +10,13 @@ const CompanyIndex = () => {
     const companies = Object.values(useSelector(state => state.companies))//.slice(0,2)
     const dispatch = useDispatch();
     const sessionUser = useSelector(state=>state.session.user)
+    const history = useHistory();
 
     useEffect(()=>{
         dispatch(fetchCompanies())
     },[])
 
-    if (!sessionUser) return <Redirect to="/login" />;
+    if (!sessionUser) history.push('/login');
     if(!companies) return null;
     return (
         <>

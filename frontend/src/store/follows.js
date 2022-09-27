@@ -45,7 +45,6 @@ export const deleteFollow = (followId) => async dispatch => {
     const nextState = { ...state };
     switch(action.type) {
       case SET_USER:
-        // debugger
         if(!action.payload) return null
         return{...nextState,...action.payload.follows}
       case REMOVE_FOLLOW:

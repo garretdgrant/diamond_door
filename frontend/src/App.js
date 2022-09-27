@@ -9,6 +9,7 @@ import SignupFormPage from "./components/signUpForm";
 import Splash from "./components/splash";
 import UpdateInterviewForm from "./components/UpdateInterviewForm";
 import UpdateReviewForm from "./components/UpdateReview";
+import UpdateUserForm from "./components/UpdateUserForm";
 import { UserProfile } from "./components/UserProfile";
 import "./index.css"
 
@@ -45,8 +46,9 @@ function App() {
           <Route path='/profile'>
             <UserProfile />
           </Route>
+          <Route path='/update-user' ><UpdateUserForm /></Route>
           <Route path = "/" >
-            <LoginFormPage />
+            <Splash />
           </Route>
         </Switch>
     </>

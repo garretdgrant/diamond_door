@@ -1,7 +1,9 @@
 .companies-container{
     height: 100%;
     width: 65%;
-    column-count: 2;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-gap: 1rem;
 }
 
 .companies-container  p.companies-index-rating {
@@ -18,12 +20,13 @@
     align-items: center;
     justify-content: center;
     font-weight: 700;
-    font-family: 'Lato', sans-serif !important;
+    font-family: 'Lato', sans-serif;
 }
 
 .companies-container img {
     height: 20%;
     margin-bottom: 1rem;
+    border-radius: 12px;
     
 }
 
@@ -34,15 +37,13 @@
     page-break-inside: avoid;
     padding: 1rem;
     overflow: hidden;
-    margin-bottom: 1rem;
-    border-radius: 3px;
+    border-radius: 12px;
     box-shadow: 0 0 2px #c4c7cc;
 
 }
 
 .parent-companies-container{
     display: flex;
-    /* justify-content: space-between; */
     flex-direction: column;
     align-items: center;
     padding: 1rem;

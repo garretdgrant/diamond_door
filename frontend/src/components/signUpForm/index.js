@@ -46,6 +46,8 @@ function SignupFormPage() {
         if (data?.errors) setErrors(data.errors);
         else if (data) setErrors([data]);
         else setErrors([res.statusText]);
+      }).then(res => {
+        dispatch(session.login({email, password}))
       });
     }
     return setErrors(['Confirm Password field must be the same as the Password field']);
@@ -59,17 +61,19 @@ function SignupFormPage() {
   return (
     <>
         <form onSubmit={handleSubmit} className='sign-up-form'>
-            <img src="sessionBackground.jpg" alt="" />
-        <div className="sign-up-inputs">
-        <h1 className="sign-up-header">You deserve a job that loves you back</h1>
-      {errors ? 
-        <div class="error-container">
-            <ul>
-                {errors.map(error => <li key={error}>{error}</li>)}
-            </ul>
-        </div>
-      
-      : null}
+          <img src="login-background.jpg" alt="" />
+          <div className="sign-up-inputs">
+          <h1 className="sign-up-header">You deserve a job that loves you back</h1>
+           {errors ? 
+              <div class="error-container">
+                  <ul>
+                      {errors.map(error => <li key={error}>{error}</li>)}
+                  </ul>
+              </div>
+            
+            : null
+            }
+
             <input
             type="text"
             value={email}

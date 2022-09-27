@@ -27,9 +27,9 @@ class User < ApplicationRecord
     validates :password, allow_nil: true, length:{in: 6..255}
     validates :session_token, uniqueness: true
 
-    has_many :reviews
-    has_many :interviews
-    has_many :follows
+    has_many :reviews, dependent: :destroy
+    has_many :interviews, dependent: :destroy
+    has_many :follows, dependent: :destroy
 
     def self.find_by_credentials(email, password) 
         User.find_by(email: email)&.authenticate(password)

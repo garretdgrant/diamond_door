@@ -1,6 +1,6 @@
 import './UserProfile.css'
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import CompanyInfo from '../companyIndex/CompanyInfo';
 import { useEffect } from 'react';
 import { fetchFollows } from '../../store/follows';
@@ -12,8 +12,9 @@ import { VscBriefcase } from  'react-icons/vsc'
 export const UserProfile = (props) => {
     const dispatch=useDispatch();
     const user = useSelector(state=>state.session.user);
-    const follows = Object.values(useSelector(state=>state.follows))
-    const companies = useSelector(state=>state.companies)
+    const follows = Object.values(useSelector(state=>state.follows));
+    const companies = useSelector(state=>state.companies);
+    const history = useHistory();
     useEffect(()=>{
        if (user) dispatch(fetchFollows(user.id))
         dispatch(fetchCompanies())
@@ -40,7 +41,7 @@ export const UserProfile = (props) => {
                 <h1 >Companies you Follow</h1>
             </div>
                 <div className="profile-company-flexer">
-                        <div className='profile-user-container'>
+                        <div className='profile-user-container' onClick={()=>history.push('/update-user')}>
                             <div className='profile-user-box'>
                                 <img className='user-profile-pic' src="/garret_grad.jpg"  />
                                 <h1 className='user-profile-box-name'>{`${user.fName} ${user.lName}`}</h1>
@@ -49,9 +50,10 @@ export const UserProfile = (props) => {
                                         <  VscBriefcase />
                                         <h1 className='user-profile-box-job-title'>{user.jobTitle}</h1>
                                     </span>
-                                    <h1 className='member-since'>Member since: 
-                                        {' ' + memberSince(user.createdAt)}
-                                    </h1>
+                                    <div className='member-since'>
+                                        <h1 >Member since:</h1>
+                                        <p>{' ' + memberSince(user.createdAt)}</p>
+                                    </div>
                                 </div>
 
                             </div>

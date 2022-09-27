@@ -70,10 +70,9 @@ const storeCSRFToken = response => {
 const sessionReducer = (state = initialState, action) => {
     Object.freeze(state);
     const nextState = { ...state };
-  
     switch(action.type) {
       case SET_USER:
-        if (action.payload){
+        if (action.payload.user){
           return {user: {...action.payload.user }};
         } else {
           return {user: null}
