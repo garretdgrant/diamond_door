@@ -29,6 +29,11 @@ const UpdateUserForm = () =>{
   
     const handleSubmit = (e) => {
         e.preventDefault();
+        if (user.email === 'demo@user.io'){
+            alert('The demo user cannot be updated, to use this feature please log out and sign up.')
+            history.push('/profile')
+            return null;
+        }
         const userData = {
             id: user.id,
             fName,
