@@ -48,7 +48,8 @@ function App() {
           </Route>
           <Route path='/update-user' ><UpdateUserForm /></Route>
           <Route path = "/" >
-            <Splash />
+            {/* <Splash /> */}
+            <LoginFormPage />
           </Route>
         </Switch>
     </>

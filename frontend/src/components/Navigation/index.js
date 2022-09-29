@@ -25,7 +25,7 @@ const Navigation = () => {
             <div className='nav-bar'>
 
                 <div className='left-side'>
-                    <Link to={`/`}>diamond door</Link> 
+                    <Link to={`/companies`}>diamond door</Link> 
                 </div>
 
 

@@ -11,6 +11,7 @@ import * as session from './store/session.js'
 import * as interview from './store/interviews.js'
 import * as review from './store/reviews.js'
 import * as follow from './store/follows.js'
+import ScrollToTop from './components/Utils/ScrollToTop';
 
 const store = configureStore();
 
@@ -29,6 +30,7 @@ function Root() {
   return (
     <Provider store={store}>
       <BrowserRouter>
+      <ScrollToTop />
         <App />
       </BrowserRouter>
       </Provider>
