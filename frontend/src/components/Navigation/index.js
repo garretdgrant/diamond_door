@@ -30,11 +30,8 @@ const Navigation = () => {
 
 
                 <div className='personal-links'>
-                    <div className='gitHub'><a href="https://github.com/garretdgrant"><VscGithub /></a></div>
-                    
-                    <div className='linkedin'><a href="https://www.linkedin.com/in/garret-d-grant/"><AiOutlineLinkedin /></a></div> 
-                   
-                    <div className='portfolio'> <a href="portfolio.com"><VscBriefcase /></a></div>
+                    <a href="https://github.com/garretdgrant"><VscGithub /></a>
+                    <a id='linked-icon' href="https://www.linkedin.com/in/garret-d-grant/"><AiOutlineLinkedin /></a>
                 </div>
 
                 <div className='right-side'>
@@ -47,8 +44,7 @@ const Navigation = () => {
                                
                                 <button onClick={handleLog}>{user ? 'Log Out' : 'Sign In'}</button>
                             </div>
-                            <VscAccount  className='profile-icon'/>
-                       
+                            <div className='profile-icon-container'><VscAccount  className='profile-icon'/></div>
                     </div>
                 </div>
 

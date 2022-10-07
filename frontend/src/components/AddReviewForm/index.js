@@ -119,7 +119,7 @@ const AddReviewForm = () => {
                         <img className='add-form-logo' src={`${company.photoUrl}`} /> <br />
 
                         <form className='add-form' onSubmit={handleSubmit}>
-                            <div class="overall-rating">
+                            <div className="overall-rating">
                                 <p>Overall Rating</p>
                                 <ReactStars  size={40} count={5} onChange={handleRating} activeColor={`#0caa41`}/>
                             </div>
@@ -128,15 +128,15 @@ const AddReviewForm = () => {
                             </label> <br /> */}
 
                                 <label className='current-employee-label'>Are you a current or former employee? </label>
-                                 <div class="employee-radios-container">
-                                    <div class="current-employee-input-container">
-                                     <label for='current-employee'>
+                                 <div className="employee-radios-container">
+                                    <div className="current-employee-input-container">
+                                     <label htmlFor='current-employee'>
                                         <input id='current-employee' type="radio" name='employee' onChange={handleCurrentEmployee}  />
                                         Current Employee
                                     </label> 
                                     </div>
                                     <div className='former-employee-input-container'>
-                                    <label for="former-employee">
+                                    <label htmlFor="former-employee">
                                         <input id='former-employee' type="radio" name='employee' onChange={handleCurrentEmployee} />
                                         Former Employee
                                     </label> 
@@ -144,7 +144,7 @@ const AddReviewForm = () => {
                                  </div>
                                  <br />
                             
-                            <div class="add-form-status-container">
+                            <div className="add-form-status-container">
                                 <label> Employment Status</label> <br/><br />
                                     <select className='add-form-drop' onChange={handleEmployeeStatus} >
                                         <option value="Full-Time">Full Time</option>
@@ -160,13 +160,13 @@ const AddReviewForm = () => {
                                 <br />
                             </div>
                             
-                            <div class="add-form-headline-container">
+                            <div className="add-form-headline-container">
                                 <label>Review Headline</label> <br />
                                 <input type="text" value={headline} onChange={handleHeadline} />
                                 <br />
                             </div>
                             
-                            <div class="add-form-pros-container">
+                            <div className="add-form-pros-container">
                                 <label>Pros: </label> <br />
                                 <textarea value={pros} maxLength='200' cols="30" rows="5" id='add-form-pros' 
                                 onChange={handleTextAreaInputs} 
@@ -176,7 +176,7 @@ const AddReviewForm = () => {
                                 <br />
                             </div>
                             
-                            <div class="add-form-cons-container">
+                            <div className="add-form-cons-container">
                                 <label>Cons: </label> <br />
                                 <textarea maxLength='200' cols="30" rows="5" id='add-form-cons' 
                                 placeholder={`Share some of the downsides to work at ${company.name}`}
@@ -184,7 +184,7 @@ const AddReviewForm = () => {
                                 <br />
                             </div>
                             
-                            <div class="add-form-advice">
+                            <div className="add-form-advice">
                                 <label>Advice to Management: </label> <br />
                                     <textarea maxLength='200' cols="30" rows="5" id='add-form-advice' 
                                        placeholder={`Share suggestions for how management can improve working at ${company.name}`} 
@@ -193,14 +193,14 @@ const AddReviewForm = () => {
                             </div>
                             
                             {errors ? 
-                                <div class="error-container">
+                                <div className="error-container">
                                     {errors ? errors.map((error, i) => {
                                     return( <li key={i}>{error}</li> )
                                         }) : null}
                                 </div>
                             :null}
                            
-                            <div class="add-form-button-container"><button>Submit Review</button></div>
+                            <div className="add-form-button-container"><button>Submit Review</button></div>
                         </form>
                     </div>
                     <div className='add-form-rules-container'>

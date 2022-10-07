@@ -7,7 +7,9 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
+    "framer-motion": "^7.4.0",
     "react": "^18.2.0",
+    "react-3d-icons": "^1.0.2",
     "react-dom": "^18.2.0",
     "react-icons": "^4.4.0",
     "react-rating-stars-component": "^2.2.0",
@@ -17,7 +19,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-  "build": "BUILD_PATH='../public' react-scripts build",
+    "build": "BUILD_PATH='../public' react-scripts build",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -34,8 +36,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }, 
-   "engines": {
-     "node": "16.16.0"
-   }
+  },
+  "engines": {
+    "node": "16.16.0"
+  }
 }

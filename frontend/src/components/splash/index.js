@@ -1,28 +1,35 @@
 import './splash.css'
 import { Link, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { logout } from '../../store/session';
+import { IoDiamondSharp } from 'react-icons/io5'
+import { motion } from 'framer-motion'
+import { useEffect } from 'react';
+import { Icon, glassdoor } from "react-3d-icons";
+import { Suspense } from 'react';
+
 
 
 function Splash() {
   const history = useHistory();
   const loggedIn = useSelector(state => !!state.session.user);
-  if (loggedIn) {
-    history.push('/events')
-  }
-  if (loggedIn) history.push('/companies')
-  setTimeout(() => {history.push('/login')}, 3500)
-    return (
-      <div className='splash-page-container'>
+  useEffect(()=>{
 
-        <img className="splash-page-here" src="/here.svg" alt="here" onClick={() => {history.push(`/login`)}} />
-        <div className="splash-pin-flexer">
-          <img className="splash-page-pin" src="/pin.svg" alt="pin" onClick={() => {history.push(`/login`)}} />
-          <div className="pin-shadow"></div>
-          </div>
-        <img className="splash-page-now" src="/now.svg" alt="now" onClick={() => {history.push(`/login`)}} />
-        {/* <img src="/logo.svg" alt="logo" className="splash-page-logo" onClick={() => {history.push(`/login`)}} /> */}
-      </div> 
+  },[])
+  // if (loggedIn) history.push('/companies')
+  setTimeout(() => {history.push('/login')}, 4000)
+    return (
+      <>
+        <div className='splash-page-container'>
+          <Suspense fallback={null}>
+                <Icon 
+                  className='splash-icon' spin={2} depth={10} lightColor={'0059FF'}
+                  file={glassdoor} scale={10} color={'#0CAA41'} rotation={[360,0,0]} >
+                </Icon>
+          </Suspense>
+        </div>
+
+    
+      </>
     );
   }
   

@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect, useHistory } from 'react-router-dom';
+import {  useHistory } from 'react-router-dom';
 import updateUser, { deleteUser } from '../../store/users'
+import { MdOutlineCancel } from 'react-icons/md'
 import './UpdateUserForm.css'
 
 const UpdateUserForm = () =>{
@@ -31,7 +32,7 @@ const UpdateUserForm = () =>{
         e.preventDefault();
         if (user.email === 'demo@user.io'){
             alert('The demo user cannot be updated, to use this feature please log out and sign up.')
-            history.push('/profile')
+            // history.push('/profile')
             return null;
         }
         const userData = {
@@ -65,7 +66,6 @@ const UpdateUserForm = () =>{
         <div className='update-user-page'>
             <div className='update-user-container'>
                 <form onSubmit={handleSubmit} className='update-user-form'>
-            
                 <div className="update-user-inputs">
                 <h1 className="update-user-header">Update your information</h1>
                 {errors ? 
@@ -114,13 +114,14 @@ const UpdateUserForm = () =>{
                     />
                 <div className='update-user-buttons'>
                     <button type="submit">Update</button>
-                    <button onClick={handleAccountDelete}>Delete Account</button>
+                    <div onClick={handleAccountDelete}>Delete Account</div>
                 </div>   
                
                 </div>
 
                 </form>
             </div>
+              
         </div>
     </>
     )

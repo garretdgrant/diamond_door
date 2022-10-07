@@ -37,6 +37,7 @@ function LoginFormPage() {
 
   return (
     <>
+      
         <form onSubmit={handleSubmit} className="login-form">
          <img src="sessionBackground.jpg" alt="" />
             <div className='login-inputs'>
@@ -76,7 +77,6 @@ function LoginFormPage() {
               </div>
               : null}
         </form>
-    
     </>
   );
 }

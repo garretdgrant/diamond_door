@@ -103,3 +103,7 @@
     display: flex;
     justify-content: center;
 }
+
+.login-page-container{
+    background-image: url('/public/sessionBackground.jpg');
+}

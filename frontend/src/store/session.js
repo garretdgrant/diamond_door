@@ -72,7 +72,7 @@ const sessionReducer = (state = initialState, action) => {
     const nextState = { ...state };
     switch(action.type) {
       case SET_USER:
-        if (action.payload.user){
+        if (action.payload !== null){
           return {user: {...action.payload.user }};
         } else {
           return {user: null}

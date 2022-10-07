@@ -17,40 +17,21 @@ import "./index.css"
 function App() {
   return (
     <>
-      <Navigation />
       <Switch >
-          <Route exact path="/login" >
-            <LoginFormPage />
-          </Route>
-          <Route exact path="/signup">
-            <SignupFormPage />
-          </Route>
-          <Route exact path='/companies'>
-            <CompanyIndex />
-          </Route> 
-          <Route  path='/companies/:companyId'>
-            <CompanyShow />
-          </Route>
-          <Route path='/add-review/:companyId'>
-            <AddReviewForm />
-          </Route>
-          <Route path='/update-review/:reviewId/:companyId'>
-            <UpdateReviewForm />
-          </Route>
-          <Route path='/add-interview/:companyId'>
-            <AddInterviewForm />
-          </Route>
-          <Route path='/update-interview/:interviewId/:companyId'>
-            <UpdateInterviewForm />
-          </Route>
-          <Route path='/profile'>
-            <UserProfile />
-          </Route>
-          <Route path='/update-user' ><UpdateUserForm /></Route>
-          <Route path = "/" >
-            {/* <Splash /> */}
-            <LoginFormPage />
-          </Route>
+          <Route exact path="/login" ><LoginFormPage /></Route>
+          <Route exact path="/signup"><SignupFormPage /></Route>
+          <Route exact path = "/" ><Splash /></Route>
+          <div>
+            <Navigation />
+            <Route exact path='/add-review/:companyId'><AddReviewForm /></Route>
+            <Route exact path='/update-review/:reviewId/:companyId'><UpdateReviewForm /></Route>
+            <Route exact path='/add-interview/:companyId'><AddInterviewForm /></Route>
+            <Route exact path='/update-interview/:interviewId/:companyId'><UpdateInterviewForm /></Route>
+            <Route exact path='/profile'><UserProfile /></Route>
+            <Route exact path='/update-user' ><UpdateUserForm /></Route>
+            <Route exact path='/companies'><CompanyIndex /></Route> 
+            <Route exact path='/companies/:companyId'><CompanyShow /></Route>
+          </div>
         </Switch>
     </>
   );

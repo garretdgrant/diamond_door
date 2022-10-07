@@ -1,13 +1,10 @@
 .update-user-container{
-    /* background-color: aqua; */
     width: 500px;
     height: calc(100vh - 80px);
     position: relative;
     background-color: #fff;
     border-radius: 3px;
     box-shadow: 0 1px 1px 1px hsl(0deg 0% 50% / 30%);
-    padding: 2rem;
-
 }
 .update-user-page{
     background-color: #eaeaea;
@@ -23,6 +20,7 @@
 .update-user-form{
     width: 100%;
     height: fit-content;
+    /* position: relative; */
 }
 
 .update-user-inputs{
@@ -62,7 +60,7 @@
     width: 80%;
 }
 
-.update-user-buttons button{
+.update-user-buttons > *{
     height: 40px;
     border-color: transparent;
     border-radius: 3px;
@@ -83,5 +81,27 @@
     min-width: 150px;
     padding: 0;
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+.cancel-icon-container{
+    font-size: 2rem;
+    padding: 1rem;
+    color: #505863;
+    cursor: pointer;
+}
+
+.cancel-icon-container:hover{
+    cursor: pointer;
+}
+
+.cancel-icon-flexer{
+    display: flex;
+    justify-content: flex-end;
+    cursor: pointer;
+}
+
+
 
