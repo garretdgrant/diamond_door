@@ -4,7 +4,7 @@ import '../AddInterviewForm/AddInterviewForm.css'
 import {FiThumbsUp, FiThumbsDown} from 'react-icons/fi'
 import {AiOutlineMinus} from 'react-icons/ai'
 import { useEffect, useState } from 'react';
-import { createInterview, fetchInterview } from '../../store/interviews';
+import { createInterview, fetchInterview, updateInterview } from '../../store/interviews';
 import { fetchCompany } from '../../store/companies';
 import {HiInformationCircle} from 'react-icons/hi'
 
@@ -103,9 +103,10 @@ const UpdateInterviewForm = () => {
             difficulty,
             offer,
             questions,
-            answer
+            answer,
+            id: interviewId
         }
-        dispatch(createInterview(payload)).then(
+        dispatch(updateInterview(payload)).then(
             ()=> history.push(`/companies/${company.id}`)
         )
         .catch( async (res) => {
