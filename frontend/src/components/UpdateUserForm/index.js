@@ -114,7 +114,7 @@ const UpdateUserForm = () =>{
                     />
                 <div className='update-user-buttons'>
                     <button type="submit">Update</button>
-                    <div onClick={handleAccountDelete}>Delete Account</div>
+                    <div className='delete-account' onClick={handleAccountDelete}>Delete Account</div>
                 </div>   
                
                 </div>

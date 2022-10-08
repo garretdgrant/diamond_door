@@ -54,7 +54,7 @@ const CompanyShow = () => {
             else span.style.color = 'grey';
         })
        }
-    },[reviews])
+    },[reviews, averageRating])
 
     const handleFollow = (e,companyId) =>{
         e.preventDefault();
@@ -84,6 +84,8 @@ const CompanyShow = () => {
             int.style.borderBottom = null;
             rev.style.border = null;
         } 
+
+        window.scrollTo({top: 750, behavior: 'smooth'});
         
 
     }
@@ -185,8 +187,10 @@ const CompanyShow = () => {
                             <h1 className='company-overview-header'>{company.name} Interview Questions</h1> 
                         </div> }
 
-                        {show ?  reviews.map( review => {return(<ReviewShow companyName={company.name} review={review} key={review.id}/>)}) : 
-                        interviews.map((interview, index) => {return <InterviewShow companyName={company.name} interview={interview} key={interview.id} index={index} user={sessionUser}/> })}
+                        {show ?  
+                            reviews.map( review => {return(<ReviewShow companyName={company.name} review={review} key={review.id}/>)}) : 
+                            interviews.map((interview, index) => {return <InterviewShow companyName={company.name} interview={interview} key={interview.id} index={index} user={sessionUser}/> 
+                        })}
                     
                     </div>
                 </div>

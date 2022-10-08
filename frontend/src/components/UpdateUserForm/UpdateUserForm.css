@@ -84,6 +84,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: ease-in-out 0.2s;
+    border-color: #1861bf;
+}
+
+.update-user-buttons > button:hover{
+    background-color: #fff;
+    color: #1861bf;
 }
 
 .cancel-icon-container{
@@ -103,5 +110,16 @@
     cursor: pointer;
 }
 
+
+.delete-account{
+    background-color: #c5553c;
+    border-color: #c5553c;
+    transition: ease-in-out 0.2s;
+}
+
+.delete-account:hover{
+    background-color: #fff;
+    color: #c5553c;
+}
 
 

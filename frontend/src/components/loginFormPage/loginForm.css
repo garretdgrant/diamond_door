@@ -8,10 +8,7 @@
 .login-form {
     height: 100vh;
     width: 100%;
-}
-
-.login-form-header{
-    /* width: 400px; */
+    overflow: hidden;
 }
 
 

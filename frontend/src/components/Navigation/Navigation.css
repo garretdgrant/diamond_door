@@ -54,7 +54,7 @@ a {
 .left-side a{
     color: #0caa41;
     height: 100%;
-    width: 100%;
+    width: fit-content;
     display: flex;
     align-items: center;
     font-size: 45px;

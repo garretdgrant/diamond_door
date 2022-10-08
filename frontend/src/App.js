@@ -21,7 +21,7 @@ function App() {
           <Route exact path="/login" ><LoginFormPage /></Route>
           <Route exact path="/signup"><SignupFormPage /></Route>
           <Route exact path = "/" ><Splash /></Route>
-          <div>
+          <>
             <Navigation />
             <Route exact path='/add-review/:companyId'><AddReviewForm /></Route>
             <Route exact path='/update-review/:reviewId/:companyId'><UpdateReviewForm /></Route>
@@ -31,7 +31,7 @@ function App() {
             <Route exact path='/update-user' ><UpdateUserForm /></Route>
             <Route exact path='/companies'><CompanyIndex /></Route> 
             <Route exact path='/companies/:companyId'><CompanyShow /></Route>
-          </div>
+          </>
         </Switch>
     </>
   );
