@@ -8,8 +8,8 @@ function SignupFormPage() {
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
   const [email, setEmail] = useState("");
-  const [fName, setFname] = useState("");
-  const [lName, setLname] = useState("");
+  const [firstName, setFname] = useState("");
+  const [lastName, setLname] = useState("");
   const [phone,setPhone] = useState("")
   const [jobTitle, setJobTitle] = useState("");
   const [password, setPassword] = useState("");
@@ -27,8 +27,8 @@ function SignupFormPage() {
     const userData = {
         email: email,
         password: confirmPassword,
-        fName,
-        lName,
+        firstName,
+        lastName,
         phone,
         jobTitle
       };
@@ -84,7 +84,7 @@ function SignupFormPage() {
     
             <input
             type="text"
-            value={fName}
+            value={firstName}
             onChange={(e) => setFname(e.target.value)}
             required
             placeholder="First Name"
@@ -92,7 +92,7 @@ function SignupFormPage() {
     
             <input
             type="text"
-            value={lName}
+            value={lastName}
             onChange={(e) => setLname(e.target.value)}
             placeholder="Last Name"
             required

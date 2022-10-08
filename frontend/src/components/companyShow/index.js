@@ -89,7 +89,7 @@ const CompanyShow = () => {
         
 
     }
-    if (!company || !reviews) return (<>No company or Reviews</>);
+    if (!company || !reviews) return (<></>);
 
          return (
         <>

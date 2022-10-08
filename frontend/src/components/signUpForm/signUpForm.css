@@ -9,7 +9,7 @@
 .sign-up-form {
     height: 100vh;
     width: 100%;
-    overflow: none;
+    overflow: hidden;
 }
 
 

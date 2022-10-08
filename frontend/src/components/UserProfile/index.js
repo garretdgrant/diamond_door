@@ -44,7 +44,7 @@ export const UserProfile = (props) => {
                         <div className='profile-user-container' onClick={()=>history.push('/update-user')}>
                             <div className='profile-user-box'>
                                 <img className='user-profile-pic' src="/garret_grad.jpg"  />
-                                <h1 className='user-profile-box-name'>{`${user.fName} ${user.lName}`}</h1>
+                                <h1 className='user-profile-box-name'>{`${user.firstName} ${user.lastName}`}</h1>
                                 <div className='profile-title-since-flex'>
                                     <span className='user-profile-box-icon' >
                                         <  VscBriefcase />

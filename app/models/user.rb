@@ -4,8 +4,8 @@
 #
 #  id              :bigint           not null, primary key
 #  email           :string           not null
-#  f_name          :string           not null
-#  l_name          :string           not null
+#  first_name          :string           not null
+#  last_name          :string           not null
 #  website         :string
 #  about_me        :text
 #  job_title       :string           not null
@@ -20,10 +20,11 @@ class User < ApplicationRecord
     has_secure_password
     before_validation :ensure_session_token
 
-    validates :email, :f_name, :l_name, :job_title, :password_digest, :session_token, 
+    validates :email, :first_name, :last_name, :job_title, :password_digest, :session_token, 
         presence: true
     validates :email, length: {in: 3..255}, 
         format: {with: URI::MailTo::EMAIL_REGEXP, message: 'must be a valid email'}, uniqueness: true
+    validates :first_name, :last_name, :job_title, length: {message: 'must be between 3 and 20 characters', in: 3..20}
     validates :password, allow_nil: true, length:{in: 6..255}
     validates :session_token, uniqueness: true
 
