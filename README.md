@@ -1,57 +1,60 @@
-## Diamond Door
----
+# README
 
-[Live site](https://diamond-door.herokuapp.com/)
+# Table of Contents
 
-Diamond Door is a full-stack clone of glassdoor.com, a job review app.
+### 1) Introduction
+### 2) What is BananaTok?
+### 3) Technology Stack
+### 4) Features (with Screen Grabs)
 
-
-Technologies:
----
----
-
-* Ruby on Rails
-* React.js
-* Redux.js
-* Node.js
-* PostgreSQL
-* Webpack
-* Amazon AWS S3
+&nbsp;  
 
 
-Diamond Door is built with a Ruby on Rails backend framework. The frontend utilizes React and Redux to create a dynamic single page application. All data is stored through PostgreSQL database, with photos for company logos being uploaded and stored through Amazon AWS S3. These technologies allow users to smoothly navigate throughout the site and allow for dynamic creation, updating, and deleting of interviews and reviews. Users are also able to follow and unfollow companies. 
+# Introduction
+## Welcome to Diamond Door README
+
+This README will outline the features, intent, and technology of Diamond Door.
+
+[Diamond Door](https://diamond-door.herokuapp.com/) is a project clone of the popular job review app: Glassdoor. This app was developed as a demonstration of knowledge and skills in the technology stack utillized, and is in no way meant to be monetized. I chose to make a clone of Glassdoor because I found it to have complicated features that would provide logical challenges and a great learning experience. Building this site brought many challenges that I have had a great learning experiencing overcoming. I am proud of the work I was able to accomplish with this full-stack clone and I hope you have time to explore all its features! Feel free to contact me at g.grant92@gmail.com with any questions you may have while exploring my application!
+<br/><br/>
 
 
-Features:
----
----
+# Technology Stack
 
-User Authentication:
----
+- Frontend: JavaScript, React.js + Redux.js, HTML, CSS
+- Backend: Ruby on Rails
+- Additional: AWS S3, Heroku, Google Fonts
 
-* Users can sign up for an account on Diamond Door. They can also log in to view their profile page.
-* Users can log in or sign up via the buttons in the top right corner. Once logged in they those buttons are replaced with Logout and Profile buttons. 
-* If a visitor does not want to create an account, they can log in as a Demo User. This provides them with full access to Diamond Door's review, interview, and follow features.
-* Users must be logged in to access any features of Diamond Door. 
+&nbsp;
 
-Reviews:
----
-* At the bottom of the company show page, users will see all reviews for that company.
-* If they have left a review, they will be able to edit or remove said review.
-* Users are limited to one review per company.
+# Features
 
-Interviews:
----
-* At the top of the company show page, users can click an interviews button to reveal interview experiences.
-* At the bottom of the company show page, users will see all interviews for that company.
-* If they have left an interview, they will be able to edit or remove said interview.
-* Users are allowed to post as many interview experiences as desired.
+## 1) User Authentication:
+
+- Diamond Door has the full User Authentication pattern (signup, login, demo login), limiting all of its features to users who create an account/login. Logged in users can see and populate reviews and interviews on companies. Users are also able to edit or delete their profile, reviews, and interviews:
+
+![LoginPage](./frontend/public/diamond_door_login_page.jpg)
+
+&nbsp;
 
 
-Follows:
----
-* At the top of the company show page, users can click a follow button to follow a company.
-* If the user follows a company, the follow button is replaced with an unfollow button, to unfollow the company.
-* Followed companies are displayed on the user profile page.
-* Users are allowed to follow as many companies desired.
+## 2) Creating, Reading, Updating, and Destroying Reviews:
+
+- As mentioned above, users can add reviews on companies and they also have the ability to edit or delete reviews they have left:
+
+![Reviews](https://media.giphy.com/media/1AN6b5SjNDOmot6clY/giphy.gif)
+
+&nbsp;
+
+
+## 3) Creating, Reading, Updating, and Destroying Interviews:
+
+- Similar to reviews, Users can descripe their interview process with a company:
+
+&nbsp;
+
+## 4) Following and Unfollowing Companies
+- Users can follow and unfollow companies. Followed companies will be rendered on the user profile page:
+
+
 
