@@ -3,9 +3,8 @@
 # Table of Contents
 
 ### 1) Introduction
-### 2) What is BananaTok?
-### 3) Technology Stack
-### 4) Features (with Screen Grabs)
+### 2) Technology Stack
+### 3) Features (with Screen Grabs)
 
 &nbsp;  
 
