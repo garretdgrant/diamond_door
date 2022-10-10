@@ -18,8 +18,8 @@ class Company < ApplicationRecord
     validates :name, :about, :website, presence: true
     validates :name, uniqueness: true
     has_one_attached :logo
-    has_many :reviews
-    has_many :interviews
-    has_many :follows
+    has_many :reviews, dependent: :destroy
+    has_many :interviews, dependent: :destroy
+    has_many :follows, dependent: :destroy
     
 end

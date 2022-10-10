@@ -25,10 +25,18 @@ ApplicationRecord.transaction do
   
     puts "Creating users..."
     # Create one user with an easy to remember username, email, and password:
-    User.create!(
+    garret = User.create!(
       first_name: 'Garret',
       last_name: 'Grant', 
       email: 'demo@user.io', 
+      password: 'password',
+      job_title: 'Software Engineer'
+    )
+
+    ryan = User.create!(
+      first_name: 'Ryan',
+      last_name: 'Grant', 
+      email: 'someone@email.io', 
       password: 'password',
       job_title: 'engineer'
     )
@@ -43,7 +51,7 @@ ApplicationRecord.transaction do
         last_name: last_name,
         email: email,
         phone: Faker::PhoneNumber.cell_phone,
-        job_title: Faker::Job.title,
+        job_title: 'engineer',
         password: 'password'
       }) 
     end
@@ -62,21 +70,21 @@ ApplicationRecord.transaction do
   logo = URI.open('https://diamond-door-dev.s3.us-west-1.amazonaws.com/logo_netflix.png')
   netflix.logo.attach(io: logo, filename: 'logo_netflix.png')
 
-  # Netflix Reviews
-  Review.create!(company_id: netflix.id, user_id: User.first.id, rating: 4, current_employee: true,
-  former_employee: false, employment_status: 'full time', job_title: 'engineer', headline: 'Great Company to work for',
-  pros: 'Netflix has great salaries, great management, and free lunches', cons: 'The work life balance could be much better',
-  advice: 'None, management is great' )
+  # # Netflix Reviews
+  # Review.create!(company_id: netflix.id, user_id: User.first.id, rating: 4, current_employee: true,
+  # former_employee: false, employment_status: 'full time', job_title: 'engineer', headline: 'Great Company to work for',
+  # pros: 'Netflix has great salaries, great management, and free lunches', cons: 'The work life balance could be much better',
+  # advice: 'None, management is great' )
 
-  Review.create!(company_id: netflix.id, user_id: 2, rating: 5, current_employee: true,
-    former_employee: false, employment_status: 'full time', job_title: 'engineer', headline: 'Great Company to work for',
-    pros: 'Netflix has great salaries, great management, and free lunches', cons: 'The work life balance could be much better',
-    advice: 'None, management is great' )
+  # Review.create!(company_id: netflix.id, user_id: 2, rating: 5, current_employee: true,
+  #   former_employee: false, employment_status: 'full time', job_title: 'engineer', headline: 'Great Company to work for',
+  #   pros: 'Netflix has great salaries, great management, and free lunches', cons: 'The work life balance could be much better',
+  #   advice: 'None, management is great' )
 
-    Review.create!(company_id: netflix.id, user_id: 3, rating: 5, current_employee: true,
-      former_employee: false, employment_status: 'full time', job_title: 'engineer', headline: 'Great Company to work for',
-      pros: 'Netflix has great salaries, great management, and free lunches', cons: 'The work life balance could be much better',
-      advice: 'None, management is great' )
+  # Review.create!(company_id: netflix.id, user_id: 3, rating: 5, current_employee: true,
+  #   former_employee: false, employment_status: 'full time', job_title: 'engineer', headline: 'Great Company to work for',
+  #   pros: 'Netflix has great salaries, great management, and free lunches', cons: 'The work life balance could be much better',
+  #   advice: 'None, management is great' )
 
 #Nvidia
 nvidia = Company.create!(name: 'Nvidia', about: "NVIDIA pioneered accelerated computing to tackle challenges no one 
@@ -90,6 +98,9 @@ founded: '1993', industry: 'Computer Hardware Development'
 )
 logo = URI.open('https://diamond-door-dev.s3.us-west-1.amazonaws.com/log_nvidia.png')
 nvidia.logo.attach(io: logo, filename: 'log_nvidia.png')
+
+
+
 
 #FiveNine
 fiveNine = Company.create!(name: 'Five9', about: "Five9 is a leading provider of cloud software for the enterprise 
@@ -105,6 +116,8 @@ logo = URI.open('https://diamond-door-dev.s3.us-west-1.amazonaws.com/logo_59.png
 fiveNine.logo.attach(io: logo, filename: 'logo_59.png')
 
 
+
+
 adobe = Company.create!(name: 'Adobe', about: "Adobe is the global leader in digital media and digital marketing solutions. 
   Our creative, marketing and document solutions empower everyone - from emerging artists to global brands - to bring digital 
   creations to life and deliver immersive, compelling experiences to the right person at the right moment for the best results. 
@@ -114,6 +127,8 @@ adobe = Company.create!(name: 'Adobe', about: "Adobe is the global leader in dig
   )
 logo = URI.open('https://diamond-door-dev.s3.us-west-1.amazonaws.com/logo_adobe.png')
 adobe.logo.attach(io: logo, filename: 'logo_adobe.png')
+
+
 
 amd = Company.create!(name: 'AMD', about: "amd is the global leader in digital media and digital marketing solutions. 
   Our creative, marketing and document solutions empower everyone - from emerging artists to global brands - to bring digital 
@@ -125,6 +140,8 @@ amd = Company.create!(name: 'AMD', about: "amd is the global leader in digital m
 logo = URI.open('https://diamond-door-dev.s3.us-west-1.amazonaws.com/logo_amd.png')
 amd.logo.attach(io: logo, filename: 'logo_amd.png')
 
+
+
 appfolio = Company.create!(name: 'AppFolio', about: "AppFolio is a leading cloud business management solutions provider for the real 
   estate industry. Our solutions enable customers to digitally transform their businesses, address critical business operations and 
   deliver a better customer experience.
@@ -135,6 +152,8 @@ appfolio = Company.create!(name: 'AppFolio', about: "AppFolio is a leading cloud
 )
 logo = URI.open('https://diamond-door-dev.s3.us-west-1.amazonaws.com/logo_appfolio.png')
 appfolio.logo.attach(io: logo, filename: 'logo_appfolio.png')
+
+
 
 
 apple = Company.create!(name: 'Apple', about: "We're a diverse collective of thinkers and doers, continually reimagining what's possible 
@@ -339,6 +358,54 @@ zoom = Company.create!(name: 'Zoom Video Communications', about: "Zoomies help p
   founded: '2011', industry: 'Information Technology Support Services')
 logo = URI.open('https://diamond-door-dev.s3.us-west-1.amazonaws.com/logo_zoom.png')
 zoom.logo.attach(io: logo, filename: 'logo_zoom.png')
+
+Company.all.each do |company|
+
+  # company Reviews
+  Review.create!(company_id: company.id, user_id: User.first.id, rating: 4, current_employee: true,
+    former_employee: false, employment_status: 'full time', job_title: 'engineer', headline: 'Great Company to work for',
+    pros: "#{company.name} has great salaries, great management, and free lunches", cons: 'The work life balance could be much better',
+    advice: 'None, management is great' )
+
+  Review.create!(company_id: company.id, user_id: 2, rating: 5, current_employee: true,
+    former_employee: false, employment_status: 'full time', job_title: 'engineer', headline: 'Amazing mangement!',
+    pros: "#{company.name} has been the best company to work for, I highly recommend joining", cons: 'Hard to think of, it has been a great company',
+    advice: 'None, management is great' )
+
+  Review.create!(company_id: company.id, user_id: 3, rating: 5, current_employee: true,
+    former_employee: false, employment_status: 'full time', job_title: 'engineer', headline: 'Never leaving this place',
+    pros: "#{company.name} really put's their employees first. Family feel at this company.", cons: 'Promotions can be hard to come by, but all in all, great company!',
+    advice: 'Give me a promotion!' )
+
+    # Table name: interviews
+#
+#  id         :bigint           not null, primary key
+#  company_id :bigint
+#  user_id    :bigint
+#  experience :string           not null
+#  title      :string           not null
+#  process    :text             not null
+#  difficulty :string           not null
+#  offer      :string           not null
+#  questions  :text             not null
+#  answer     :text
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+
+    # Company Interviews
+    Interview.create!(company_id: company.id, user_id: User.first.id, experience: 'postive', title: 'Software Engineer',
+                        process: 'The interview was great. Applied online, interviewed in person. Manager was easy to talk to!',
+                        difficulty: 'Average', offer: 'Accepted', questions: 'Where do you want to be in 5 years?')
+
+    Interview.create!(company_id: company.id, user_id: 2, experience: 'neutral', title: 'Software Engineer',
+      process: 'The interview was ok. Applied online, got a phone screen. The DSA test was really hard.',
+      difficulty: 'Average', offer: 'Declined', questions: "What about #{company.name} makes you want to work here?")
+
+      Interview.create!(company_id: company.id, user_id: User.first.id, experience: 'negative', title: 'Software Engineer',
+        process: 'The interview was Terrible. Recruiter on the phone was so mean, never got past phone screen',
+        difficulty: 'Difficult', offer: 'Accepted', questions: 'What is a NoSQL database and why would you use one?')
+
+end
 
   
     puts "Done!"
