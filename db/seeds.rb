@@ -377,20 +377,6 @@ Company.all.each do |company|
     pros: "#{company.name} really put's their employees first. Family feel at this company.", cons: 'Promotions can be hard to come by, but all in all, great company!',
     advice: 'Give me a promotion!' )
 
-    # Table name: interviews
-#
-#  id         :bigint           not null, primary key
-#  company_id :bigint
-#  user_id    :bigint
-#  experience :string           not null
-#  title      :string           not null
-#  process    :text             not null
-#  difficulty :string           not null
-#  offer      :string           not null
-#  questions  :text             not null
-#  answer     :text
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
 
     # Company Interviews
     Interview.create!(company_id: company.id, user_id: User.first.id, experience: 'postive', title: 'Software Engineer',
