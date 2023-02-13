@@ -21,7 +21,7 @@ This README will outline the features, intent, and technology of Diamond Door.
 # Technology Stack
 
 - Frontend: JavaScript, React.js + Redux.js, HTML, CSS
-- Backend: Ruby on Rails
+- Backend: Ruby on Rails, PostgreSQL
 - Additional: AWS S3, Heroku, Google Fonts
 
 &nbsp;
@@ -48,7 +48,7 @@ This README will outline the features, intent, and technology of Diamond Door.
 
 ## 3) Creating, Reading, Updating, and Destroying Interviews:
 
-- Similar to reviews, Users can descripe their interview process with a company:
+- Similar to reviews, Users can describe their interview process with a company:
 
 &nbsp;
 
