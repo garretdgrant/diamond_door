@@ -54,7 +54,6 @@ export const fetchReview = (reviewId) => async dispatch => {
 const reviewsReducer = (state = null, action) => {
     Object.freeze(state);
     const nextState = { ...state };
-  
     switch(action.type) {
       case SET_COMPANY:
         return {...action.payload.reviews}

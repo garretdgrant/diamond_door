@@ -1,11 +1,9 @@
-import ReactStars from "react-rating-stars-component";
 import { Link } from "react-router-dom"
 
 const CompanyInfo = ({company}) => {
     
     if(!company) return null;
-    return(
-       
+    return(  
         <Link  to={`/companies/${company.id}`}>
             <div className={`${company.name}-container`} >
                 <img src={company.photoUrl}  />

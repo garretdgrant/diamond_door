@@ -26,7 +26,6 @@ export const createFollow = (payload) => async dispatch =>{
 }
 
 export const deleteFollow = (followId) => async dispatch => {
-  
     const response = await csrfFetch(`/api/follows/${followId}`,
     {method: 'DELETE'});
     const payload = await response.json();

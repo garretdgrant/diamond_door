@@ -2,29 +2,28 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import  {Provider}  from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
-// import './index.css';
 import App from './App';
 import configureStore from './store';
-import { fetchCompanies } from './store/companies';
-import csrfFetch, {restoreCSRF} from './store/csrf';
 import * as session from './store/session.js'
-import * as interview from './store/interviews.js'
-import * as review from './store/reviews.js'
-import * as follow from './store/follows.js'
 import ScrollToTop from './components/Utils/ScrollToTop';
+import csrfFetch, {restoreCSRF} from './store/csrf';
+// import { fetchCompanies } from './store/companies';
+// import * as interview from './store/interviews.js'
+// import * as review from './store/reviews.js'
+// import * as follow from './store/follows.js'
 
 const store = configureStore();
 
-if (process.env.NODE_ENV !== 'production') {
-  window.store = store;
-  window.csrfFetch = csrfFetch;
-  window.restore = restoreCSRF;
-  window.session = session;
-  window.fetchCompanies = fetchCompanies;
-  window.interview = interview
-  window.review = review;
-  window.follow = follow;
-}
+// if (process.env.NODE_ENV !== 'production') {
+  // window.store = store;
+  // window.csrfFetch = csrfFetch;
+  // window.restore = restoreCSRF;
+  // window.session = session;
+  // window.fetchCompanies = fetchCompanies;
+  // window.interview = interview
+  // window.review = review;
+  // window.follow = follow;
+// }
 
 function Root() {
   return (

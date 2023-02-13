@@ -20,8 +20,6 @@ const CompanyIndex = () => {
     if(!companies) return null;
     return (
         <>
-            
-
             <div className='parent-companies-container'>
                  <h1 className='companies-index-header'>Companies Recommended for You</h1>
                 <div className='companies-container'>
