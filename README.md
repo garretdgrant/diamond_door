@@ -15,7 +15,7 @@
 
 This README will outline the features, intent, and technology of Diamond Door.
 
-[Diamond Door](https://diamond-door.herokuapp.com/) is a project clone of the popular job review app: Glassdoor. This app was developed as a demonstration of knowledge and skills in the technology stack utillized, and is in no way meant to be monetized. I chose to make a clone of Glassdoor because I found it to have complicated features that would provide logical challenges and a great learning experience. Building this site brought many challenges that I have had a great learning experiencing overcoming. I am proud of the work I was able to accomplish with this full-stack clone and I hope you have time to explore all its features! Feel free to contact me at g.grant92@gmail.com with any questions you may have while exploring my application!
+[Diamond Door](https://diamond-door.herokuapp.com/) is a project clone of the popular job review app: Glassdoor. This app was developed as a demonstration of knowledge and skills in the technology stack utillized, and is in no way meant to be monetized. I chose to make a clone of Glassdoor because I found it to have complicated features that would provide logical challenges and a great learning experience. Building this site brought many challenges that I have had a great learning experiencing overcoming. I am proud of the work I was able to accomplish with this full-stack clone and I hope you have time to explore all its features! Feel free to contact me at garret.grant.swe@gmail.com with any questions you may have while exploring my application!
 <br/><br/>
 
 
