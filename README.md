@@ -5,6 +5,7 @@
 ### 1) Introduction
 ### 2) Technology Stack
 ### 3) Features (with Screen Grabs)
+### 4) Code Snippets
 
 &nbsp;  
 
@@ -49,6 +50,8 @@ This README will outline the features, intent, and technology of Diamond Door.
 ## 3) Creating, Reading, Updating, and Destroying Interviews:
 
 - Similar to reviews, Users can describe their interview process with a company:
+
+# Code Snippets
 
 &nbsp;
 
