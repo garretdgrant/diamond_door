@@ -1,0 +1,16 @@
+version: 2.1
+
+# Define the jobs we wat to run for diamond door
+jobs:
+  build:
+    docker:
+      - image: cimg/ruby:2.7.2
+    steps:
+      - checkout
+      - run: ruby --version
+
+# Define the workflows
+workflows:
+  main:
+    jobs:
+      - build
